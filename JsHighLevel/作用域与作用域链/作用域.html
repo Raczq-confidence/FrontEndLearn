@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+		 * 作用域在函数定义时就已经确定，而执行上下文是在函数调用之前形成的
+		 * 作用域是静态的，而执行上下文是动态的
+		 * 执行上下文是栈结构，作用域是分块(作用域大致这么理解)
+		 */ 
+			
+		var a = 2;
+		function fn1 () {
+			var b = 3;
+			function fn2 () {
+				var c = 4;
+				console.log(c);
+				console.log(b);
+				console.log(a);
+				console.log(d);
+			}
+			fn2();
+		}
+		fn1();// 4  3  2  报错
+	</script>
+</html>

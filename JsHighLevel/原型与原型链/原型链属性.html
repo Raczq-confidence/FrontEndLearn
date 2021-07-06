@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Fn () {
+			
+		}
+		Fn.prototype.a = 'xxx';
+		let fn1 = new Fn();
+		console.log(fn1.a);//xxx
+		
+		let fn2 = new Fn();
+		fn2.a = 'yyy';
+		console.log(fn1.a , fn2.a);//xxx yyy
+		
+		function Person (name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.setName = function (name) {
+			this.name = name; 
+		}
+		let p1 = new Person('alice',12);
+		console.log(p1.name);//alice
+		
+		p1.setName('bob');
+		
+		console.log(p1.name);//bob
+		
+		console.log('=========================');
+		
+		/*
+		 * instanceof通过原型链来判断
+		 * A instanceof B
+		 * B的prototype(显式原型)等于A的(隐式)原型链上的某个值，返回true，否则返回false
+		 * 
+		 */
+		console.log(Object instanceof Function); //true
+		console.log(Object instanceof Object); //true
+		console.log(Function instanceof Function); //true
+		console.log(Function instanceof Object); //true
+		
+		function Foo () {
+			
+		}
+		console.log(Object instanceof Foo);//false
+		
+		console.log(Object.prototype === Object.__proto__.__proto__);//true
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		function foo () {
+//			let arr = [];
+//			for (var i = 0; i < 10; i++) {
+//				arr[i] = function () {
+//					return i;
+//				}
+//			}
+//			return arr;
+//		}
+//		let bar = foo();
+//		//console.log(i);
+//		console.log(bar[0]());//10(var) 0(let)
+//		console.log(bar[1]());//10(var) 1(let)
+//		console.log(bar[2]());//10(var) 2(let)
+		
+		function foo () {
+			let arr = [];
+			for (var i = 0; i < 10; i++) {
+				arr[i] = (function (n) {
+					return function () {
+						return n;
+					}
+				})(i);
+			}
+			return arr;
+		}
+		let bar = foo();
+		//console.log(i);
+		console.log(bar[0]());
+		console.log(bar[1]());
+		console.log(bar[2]());
+		
+	</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--
+		1.原型链
+		 * 访问一个对象的属性(方法)
+			* 先在自身属性查找，找到后返回
+			* 如果没有，再沿着__proto__属性依次向上查找，找到后返回
+			* 如果最终没有找到，返回undefined
+		 * 别名：隐式原型链
+		 * 作用：查找对象的属性(方法)
+		 * 所有函数的__proto__属性是一样的
+		
+		
+	-->
+	<script type="text/javascript">
+		console.log(Object);//Object构造函数
+		console.log(Object.prototype);//Object的原型对象，包含toString()和hasOwnProperty()等函数
+		console.log(Object.prototype.__proto__);//null 原型链的尽头
+		function Fn(){
+			this.test1 = function () {
+				console.log('test1');
+			}
+		}
+		let fn = new Fn();
+		Fn.prototype.test2 = function () {
+			console.log('test2');
+		}
+		fn.test1();
+		fn.test2();
+		console.log(fn.toString());
+		console.log(fn.test3);//undefined 
+		//console.log(fn.test3());//报错 fn.test3 is not a function
+		
+		//函数的显式原型属性默认指向一个空Object实例对象，但Object不满足
+		console.log( typeof Object.prototype);//object
+		console.log(Object.prototype instanceof Object);//false
+		console.log(Function.prototype instanceof Object);//true
+		
+		//所有函数都是Function的实例(包含Function)
+		console.log(Function.prototype === Function.__proto__);//true 
+		
+		//所有函数的隐式原型都是相等的
+		console.log(Function.__proto__ === Object.__proto__);//true
+		
+		//我自己尝试通过Function获取到原型链的尽头
+		console.log(Function.prototype.__proto__.__proto__);//null
+	</script>
+</html>

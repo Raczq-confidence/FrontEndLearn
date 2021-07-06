@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			.div{
+				
+				width: 200px;
+				height: 200px;
+				border: 2px solid #000;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="div" id="div1" draggable="true">可拖拽</div>
+		
+	</body>
+	<script>
+		
+		/*
+		 	节流就是某个时间隔一段时间就触发一次，
+		 	案例为拖拽标签时，每隔一段时间就获取标签的位置
+			此案例有细节问题（详见防抖）
+		 * */
+		
+		//对节流进行封装
+		function throttle (fn, delay = 100) {
+			
+			let timer = null
+			
+			return function () {
+				
+				if(timer) {
+					
+					return
+					
+				}
+				
+				timer = setTimeout(() => {
+					
+					fn.apply(this, arguments)
+					timer = null
+					
+				}, delay)
+				
+			}
+			
+		}
+		
+		div1.addEventListener('drag',throttle((e) => {
+			
+			console.log(e.offsetX, e.offsetY)
+			
+		}, 500))
+		
+	</script>
+</html>

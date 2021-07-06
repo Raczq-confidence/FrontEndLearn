@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!-- 
+		this在任何情况下都不指向函数的词法作用域。作用域无法通过JavaScript代码访问，它存在于JavaScript引擎内部
+		
+	-->
+	<script type="text/javascript">
+		function foo (num) {
+			console.log('foo:' + num);
+//			this.count++;
+//			console.log('number:' + this.count); // count的值永远为NaN
+			
+//			count++;
+//			console.log('number:' + count);//出异常 count not defined
+
+			foo.count++;
+			console.log('number:' + foo.count);
+			
+			
+		}
+		foo.count = 0;
+		for(let i = 0;i < 10 ;i++ ){
+			if(i>5){
+				foo(i);
+			}
+		}
+		console.log(foo.count);// 0
+		console.log('==========================');
+		/*下面这个例子说明了this不可能联通foo2()和bar()的词法作用域
+		 * this的绑定与函数的声明位置无关
+		 * 
+		 * 
+		 */
+		
+		function foo2 () {
+			var a = 2;
+			this.bar();
+		}
+		
+		function bar () {
+			console.log(this.a);
+		}
+		
+		foo2();
+	</script>
+</html>

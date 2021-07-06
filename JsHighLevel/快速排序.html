@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>快速排序</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		//快速排序(相比冒泡与插入，性能最好)
+		let arr = [12,8,15,16,1,24]
+		
+		function quik (array) {
+			
+			//判断数组是否只有一个元素
+			if(array.length <= 1){
+				
+				return array
+				
+			}
+			
+			//获取中间值
+			let middleIndex = parseInt(array.length/2)
+			let middle = array.splice(middleIndex,1)[0]
+			
+			//设置左右数组
+			let arrLeft = [],
+				arrRight = []
+				
+			for(let i=0; i<array.length; i++){
+				
+				//当选取项大于中间值，将他添加到右数组；当选取项小于中间值，将他添加在左数组
+				array[i]>middle ? arrRight.push(array[i]) : arrLeft.push(array[i])
+				
+			}
+			
+			//递归调用函数对左右数组进行排序,之后对他们进行拼接
+			return quik(arrLeft).concat(middle,quik(arrRight))
+			
+		}
+		
+		function quikSort (array) {
+			
+			if(!Array.isArray(array)) return
+			
+			if(array.length < 1) return array
+			
+			var left = []
+			
+			var right = []
+			
+			var length = array.length
+			
+			var middle = array[0]
+			
+			for(let i=1;i<length;i++) {
+				if(middle > array[i]) {
+					left.push(array[i])
+				} else {
+					right.push(array[i])
+				}
+			}
+			
+			return [...quikSort(left),middle,...quikSort(right)]
+			
+		}
+		
+		arr = quikSort(arr)
+		
+		console.log(arr)
+		
+	</script>
+</html>

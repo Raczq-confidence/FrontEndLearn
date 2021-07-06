@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var n=0; 
+		function a(){
+		    var n=10; 
+		    function b(){
+		        n++; 
+		        console.log(n); 
+		    }
+		    b();
+		    return b; 
+		}
+		var c=a();//11
+		c(); //12
+		console.log(n);//0
+
+	</script>
+</html>

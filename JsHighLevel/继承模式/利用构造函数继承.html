@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Person (name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		
+		function Student (name,age,score) {
+			Person.call(this,name,age);
+			this.score = score
+		}
+		
+		let student = new Student('alice',12,86);
+		console.log(student.name,student.age,student.score);
+		
+	</script>
+</html>

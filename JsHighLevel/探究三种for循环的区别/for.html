@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: cornflowerblue;
+				border: 1px black solid;
+				margin: 10px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	<script>
+		let divs = document.getElementsByTagName('div');
+//		for(var i = 0 ; i < divs.length ; i++){
+//			divs[i].addEventListener('click',function () {
+//				divs[i].style.background = 'pink';//报错 因为此时的i已经是3，而div[3]是空的
+//				this.style.background = 'pink';//可以
+//			});
+//		}
+
+		for(let i=0, length = divs.length; i<length;i++){
+			divs[i].addEventListener('click',function () {
+				divs[i].style.background = 'pink';
+			});
+//			console.log(divs[i]);//<div></div>
+		}
+	</script>
+</html>

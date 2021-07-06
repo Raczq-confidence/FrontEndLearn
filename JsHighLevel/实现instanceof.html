@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function myInstanceof (left,right) {
+			let proto = Object.getPrototypeOf(left)
+			
+			let prototype = right.prototype
+			
+			while(true) {
+				if(!proto) return false
+				
+				if(proto === prototype) return true
+				
+				proto = Object.getPrototypeOf(proto)
+			}
+		}
+	</script>
+</html>

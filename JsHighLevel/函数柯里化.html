@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数柯里化实现add(1)(2)(3)</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//创建相加函数
+		function add (...args) {
+			//创建相加方法
+			return args.reduce( (a,b) => a + b )
+		}
+		
+		//创建函数柯里化方法
+		function currying (fn) {
+			//创建一个空数组用来保存参数
+			let args = []
+			
+			//返回一个函数
+			return function temp(...newArgs) {
+				
+				//判断参数是否为空
+				if(newArgs.length>0) {
+					
+					args = [...args,...newArgs]
+					return temp
+					
+				} else {
+					
+					let value = fn.apply(this,args)
+					//因为是闭包，所以将此数组清空，以便下次调用
+					args = []
+					return value
+					
+				}
+				
+			}
+			
+		}
+		
+		let addCurry = currying(add)
+		
+		console.log(addCurry(1)(2)(3)())
+		
+		console.log(addCurry(2)(3)(4)(5)())
+		
+		
+	</script>
+</html>

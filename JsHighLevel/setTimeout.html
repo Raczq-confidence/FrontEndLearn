@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+//		setTimeout(
+//			function () {
+//				console.log(1);	
+//			}
+//		,2000)
+//		setTimeout(
+//			function () {
+//				console.log(2);	
+//			}
+//		,3000)
+//		全局setTimeout函数以页面加载好开始计时
+
+		setTimeout(
+			function () {
+				console.log(1)
+				setTimeout(
+					function () {
+						console.log(111);
+					}
+				,2000)
+			}
+		,2000)
+	</script>
+</html>

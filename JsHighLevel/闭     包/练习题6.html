@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		let a = 0,
+			b = 0
+		
+		function A (a) {
+			
+			A = function (b) {
+				alert( a + b++ )
+			}
+			
+			alert(a++)
+			
+		}
+		
+		A(1)//1
+		A(2)//4
+	</script>
+</html>

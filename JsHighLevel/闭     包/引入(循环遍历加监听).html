@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>测试1</button>
+		<button>测试2</button>
+		<button>测试3</button>
+	</body>
+	<script type="text/javascript">
+		let btns = document.getElementsByTagName('button');
+//		for (var i = 0,length = btns.length; i < length; i++) {
+//			btns[i].onclick = function () {
+//				alert('第'+(i+1)+'个按钮');
+//			}
+//		}//这样写全部输出第4个按钮，因为i是全局变量
+
+
+//		for (var i = 0,length = btns.length; i < length; i++) {
+//			btns[i].index = i;
+//			btns[i].onclick = function () {
+//				alert('第'+(this.index+1)+'个按钮');
+//			}
+//		}//给每个btn加一个index属性，把i保存起来
+
+		//利用闭包
+		for (var i = 0,length = btns.length; i < length; i++) {
+			(function (i) {
+				btns[i].onclick = function () {
+					alert('第'+(i+1)+'个按钮');
+				}
+			})(i);
+		}
+	</script>
+</html>

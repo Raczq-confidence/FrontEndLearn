@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习题1</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function A () {
+			console.log(1)
+		}
+		
+		function Fn () {
+			A = function() {
+				console.log(2)
+			}
+			return this
+		}
+		
+		Fn.A = A
+		
+		Fn.prototype = {
+			
+			A : () => {
+				console.log(3)
+			}
+			
+		}
+		
+		A()
+		Fn.A()
+		Fn().A()
+		new Fn.A()
+		new Fn().A()
+		new new Fn().A()//1 但是会报错(箭头函数不能被new)
+		
+	</script>
+</html>

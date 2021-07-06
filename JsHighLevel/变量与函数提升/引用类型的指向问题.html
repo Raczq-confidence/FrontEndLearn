@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let a = {
+			
+		}
+		console.log(a);//因为a是引用类型，里面保存的是地址值，所以输出中可以看到name属性
+		a.name = 'alice';
+		
+		let b = {
+			a : 1
+		}
+		console.log(b);//{a:1,e:5}
+		b.e = 5;
+		let c = {
+			n : 3,
+			m : 4
+		}
+		
+		b = c;
+		console.log(b);//{n:3,m:4}
+	</script>
+</html>

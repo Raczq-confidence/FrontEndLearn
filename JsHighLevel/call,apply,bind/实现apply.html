@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现apply</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function myApply(context,array) {
+    
+		    // 基础类型转换
+		    if(context === null || context === undefined) {
+		        context = window
+		    } else if(typeof context === 'string') {
+		        context = new String(context)
+		    } else if(typeof context === 'boolean') {
+		       	context = new Boolean(context) 
+		    } else if(typeof context === 'number') {
+		        context = new Number(context)
+		    }
+		    
+		    // 注意：当array的类型不为对象，undefined，null时才会报错(当typeof null时，值为'object')
+		    if(typeof array !== 'object' && typeof array !== 'undefined') {
+		        throw new Error('第二个参数有问题')
+		    }
+		    
+		    // 判断array是否是数组
+		    array = Array.isArray(array) ? array : []
+		    
+		    // 保存需要被调用的函数到context对象上
+		    context.fn = this
+		    
+		    // 将函数执行的返回结果存入result
+		    var result = context.fn(...array)
+		    
+		    // 将context上的fn属性清除
+		    delete context.fn
+		    
+		    // 返回值为result
+		    return result
+		    
+		}
+		
+		// 将此函数暴露在Function原型上
+		Function.prototype.myApply = myApply
+		
+		function test (a,b) {
+			console.log(this,this === obj)
+			return a + b
+		}
+		
+		var obj = {}
+		
+		test.apply(obj,[1,2])
+		test.myApply(obj,[1,2])
+		test.apply(undefined,obj)
+		test.myApply(undefined,obj)
+	</script>
+</html>

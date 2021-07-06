@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Person (name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.setName = function (name) {
+			this.name = name;
+		}
+		
+		function Student (name,age,score) {
+			Person.call(this,name,age);
+			this.score = score
+		}
+		Student.prototype = new Person();//为了能看到父类的方法
+		Student.prototype.constructor = Student;//修正构造函数的指向问题
+		Student.prototype.setScore = function (score) {
+			this.score = score;
+		}
+		
+		let s = new Student('alice',12,100);
+		s.setName('bob');
+		s.setScore(99);
+		console.log(s);
+	</script>
+</html>

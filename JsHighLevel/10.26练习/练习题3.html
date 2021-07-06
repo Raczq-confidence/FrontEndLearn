@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习题3</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		/*
+		 * ==判断两个数值不相等时的转化规则
+		 * 1.对象 == 字符串：将对象toString()转换为字符串后进行比较
+		 * 2.null == undefined 相等 但是与其他值再比较就不相等了
+		 * 3.NaN == NaN 不相等
+		 * 4.剩下的都是转换为数字
+		 */
+		
+		/*
+		 * 当对象与字符串比较时先toString() 之后再Number()
+		 * 所以此题的思路在于不让系统的toString()调用
+		 * 需要我们自己重写一个toString()方法
+		 */
+		
+//		var a = {
+//			i : 1,
+//			toString() {
+//				
+//				return this.i++
+//				
+//			}//此处写valueOf同样可以
+//		}
+		
+//		let a=1;
+		//let声明的变量不会添加到window下
+//		var a
+		let i = 0
+
+		Object.defineProperty(window, 'a', {
+			get() {
+				return ++i
+			}
+		})
+
+		if(a == 1 && a == 2 && a == 3) {
+			console.log(1)
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="input1" type="text" />
+	</body>
+	<script>
+		/*
+		 	防抖指某个事件不希望被频繁调用，在用户一段时间没有进行重复操作的话再进行调用
+		 	案例为输入框当用户停止输入时再触发
+		 * */
+		
+		//对防抖操作进行封装
+		function debounce (fn, delay = 100) {
+			
+			let timer = null
+			
+			return function () {
+				
+				if(timer) {
+					clearTimeout(timer)
+				}
+				
+				// 将this指针保存下来，防止this指向错误
+				let context = this
+				// 将参数数组也保存下来
+				let args = arguments
+				
+				timer = setTimeout(() => {
+					
+					fn.apply(context, args)
+					timer = null
+					
+				}, delay)
+			
+			}
+			
+		}
+		
+		input1.addEventListener('keyup',debounce(function() {
+			
+			console.log(input1.value)
+			
+			console.log(this)
+			
+		}, 500))
+	</script>
+</html>

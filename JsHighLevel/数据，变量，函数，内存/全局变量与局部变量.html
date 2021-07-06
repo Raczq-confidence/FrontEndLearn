@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var a = 1;
+		function fn () {
+			a = a + 1;
+		}
+		fn();
+		console.log(a);//a是全局变量所以可以修改
+		
+		function fn2 () {
+			var b = 3;
+		}
+		fn2();
+		console.log(b);//报错 is not defined
+	</script>
+</html>

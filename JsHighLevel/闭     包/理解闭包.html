@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--
+		1.闭包的产生？
+		 * 当一个嵌套的内部函数引用了嵌套的外部函数的变量时，就产生了闭包
+		2.什么是闭包？
+		 * 理解 1：闭包是嵌套的内部函数
+		 * 理解 2：包含被引用变量的对象
+		3.产生闭包的条件
+		 * 函数嵌套
+		 * 内部函数引用了外部函数的数据(变量/函数)
+	-->
+	<script type="text/javascript">
+		function fn1 () {
+			var a = 2;
+			function fn2 () {
+				console.log(a);
+			}
+		}
+		fn1();
+	</script>
+</html>

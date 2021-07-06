@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现bind</title>
+	</head>
+	<body>
+		<script>
+			function myBind(context) {
+    
+			    // 基础类型转换
+			    if(context === null || context === undefined) {
+			        context = window
+			    } else if(typeof context === 'string') {
+			        context = new String(context)
+			    } else if(typeof context === 'boolean') {
+			       	context = new Boolean(context) 
+			    } else if(typeof context === 'number') {
+			        context = new Number(context)
+			    }
+			    
+			    // 将this指针保存下来
+			    var pointer = this
+			    
+			    // 获取除了第一个参数的所有参数
+			    var args = Array.from(arguments).slice(1)
+			    
+			    /* 
+			    	定义一个用来判断这个bind函数的返回值是否被new实例化调用的
+			    	如果是，则使用pointer(即指向自己)
+			    	如果不是，则使用context
+			    */
+			    function isConstructor(){}
+			    function fn(){
+			        
+			        // 第一个参数就是绑定的指针
+			        // 第二个参数就是将bind和fn的参数合并
+			        pointer.apply(this instanceof isConstructor ? this : context,args.concat(Array.from(arguments)))
+			        
+			    }
+				
+				// 将上面函数作为bind函数的返回值
+				return fn
+				
+			}
+			
+			Function.prototype.myBind = myBind
+			
+			function test (a,b) {
+				console.log(this,this === obj)
+				console.log(a + b)
+				return a + b
+			}
+			
+			var obj = {}
+			
+			console.log(test.bind(obj,1,2)())
+			console.log(test.myBind(obj,1,2)())
+			console.log(test.bind(undefined,1)())
+			console.log(test.myBind(undefined,1)(2,3))
+		</script>
+	</body>
+</html>

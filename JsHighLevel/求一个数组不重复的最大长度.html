@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>求一个数组不重复的最大长度</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var maxLen = function(s){
+		    let max = 0;
+		    //定义一个字符串来判断数组中元素是否重复
+		    let str = '';
+		    for(let i=0;i<s.length;i++){
+		    	//当字符串没有对应元素时，将字符添加进字符串
+		        if(str.indexOf(s[i]) < 0) {
+		            str += s[i];
+		            //如果字符串长度大于最大值，则字符串的长度就是最大值
+		            if(str.length>max){
+		                max = str.length;
+		            }
+		        } else {
+		        	//如果数组中元素重复，更新字符串，将重复元素之后的截取，之后将重复元素放在最后
+		            str = str.slice(str.indexOf(s[i])+1) + s[i];
+		        }
+		    }
+		    return max;
+		}
+		
+		
+	</script>
+</html>

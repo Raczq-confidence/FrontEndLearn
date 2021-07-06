@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组去重</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		let arr = [12,23,15,12,25,15,25,14,16]
+		
+		//方法1
+//		let a = {}
+//		
+//		for( let i=0; i<arr.length;i++ ) {
+//			let item = arr[i]
+//			a[item] = item
+//		}
+//		
+//		arr = []
+//		for(let i in a) {
+//			arr.push(a[i])
+//		}
+		
+		//方法2
+		/*let a = {}
+		
+		for (let i = 0; i < arr.length; i++) {
+			
+			let item = arr[i]
+			if(typeof a[item] !== 'undefined' ){
+				arr[i] = arr[arr.length-1]
+				arr.length --
+				i--
+				continue
+			}
+			a[item] = item
+			
+		}
+		
+		console.log(arr)*/
+		
+		//方法3
+		function deleteRepeat (arr) {
+			
+			//对数组进行升序排序
+			arr.sort()
+			//对数组进行遍历
+			for( let i = 0; i < arr.length; i++ ) {
+				
+				//判断其不是第一项并且与前一项相等
+				if( i != 0 && arr[i] == arr[i-1] ) {
+					
+					//删除重复项
+					arr.splice(i,1)
+				
+				}
+			
+			}
+			return arr
+			
+		}
+		
+		console.log(deleteRepeat(arr))
+	</script>
+</html>

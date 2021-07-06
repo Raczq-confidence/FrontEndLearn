@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//封装一个JSONP跨域操作
+		/*
+		 	url 请求的路径
+		 	params 参数对象
+		 	callback 回调函数
+		 * */
+		function jsonp (url,params,callback) {
+			
+			return Promise(function (resolve,reject) {
+				let script = document.createElement('script')
+				
+				window[callback] = function (data) {
+					//执行跨域完成后的回调函数，清除掉当前页面用来跨域的script标签
+					resolve(data)
+					document.body.removeChild(script)
+				}
+				
+				let parr = []
+				
+				//对params参数对象进行处理
+				for(let i in params) {
+					
+					parr.push(`${i}=${params[i]}`)
+					
+				}
+				
+				parr.push('callback ='+callback)
+				
+				//对url进行参数拼接
+				script.src = `${url}?${parr.join('&')}`
+				
+				document.body.appendChild(script)
+				
+			})
+			
+		}
+		
+		jsonp('http://localhost:80/api'
+			{
+				a : 'zq',
+				b : 'baibai'
+			},
+			'show'
+	).then(data => { console.log(data) })
+	</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--
+		1.变量提升
+		* 用var语句修饰的变量在变量定义声明之前就可以访问到
+		* 值：undefined
+		2.函数提升
+		* 通过function声明的函数，在定义之前就可以访问
+		* 值：函数定义(对象)
+		3.变量提升和函数提升是如何产生的？
+	-->
+	<script type="text/javascript">
+		/*
+		 * 面试题：输出undefined
+		 */
+		var a = 3;
+		function fn () {
+			console.log(a);
+			var a = 4;
+			
+//			var a;
+//			console.log(a);
+//			a = 4;
+//          函数体内的等同于注释中的代码
+		}
+		fn();
+		
+//		let b = 3;
+//		function fn2 () {
+//			let b = 4;
+//			console.log(b);
+//		}
+//		fn2();//let不存在变量提升,会报错
+
+		console.log('-------------------');
+
+		console.log(b);//undefined 变量提升
+		
+		fn2();//可调用 函数提升
+		
+		fn3();//不可调用 不是function修饰
+		
+		var b = 3;
+		
+		function fn2 () {
+			console.log('fn2');
+		}
+		
+		var fn3 = function () {
+			console.log('fn3');
+		}
+	</script>
+</html>

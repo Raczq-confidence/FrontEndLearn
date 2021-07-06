@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let a = {
+			
+		}
+		console.log(a);
+		a.name = 'alice';
+	</script>
+	<!--
+		1.每个函数function都有一个显式原型，即prototype
+		2.每个函数的实例对象都有一个隐式原型，即__proto__
+		3.实例对象的__proto__(隐式原型)的值等于其构造函数的prototype(显式原型)的值
+		4.内存结构
+		
+		
+	-->
+	<script type="text/javascript">
+		//1.每个函数function都有一个显式原型，即prototype
+		function Fn () {
+			
+		}
+		console.log(Fn.prototype);
+		
+		//2.每个函数的实例对象都有一个隐式原型，即__proto__
+		let fn = new Fn();
+		
+		console.log(fn.__proto__);
+		
+		//3.实例对象的__proto__(隐式原型)的值等于其构造函数的prototype(显式原型)的值
+		console.log(Fn.prototype === fn.__proto__);
+		
+		Fn.prototype.test = function () {
+			console.log('test');
+		}
+		
+		console.log(fn);//fn之所以能调用test，是因为它的__proto__中包含test方法
+		
+		fn.test();
+		
+		//Fn.test();//此条语句报错，Fn没有test函数，也不会去prototype属性中去查找
+		
+		console.log('===================');
+		
+		console.log(fn.__proto__.__proto__);//一个对象
+		
+		console.log(fn.__proto__.__proto__ === Fn.prototype.__proto__);//true 两者的值相等
+	</script>
+</html>

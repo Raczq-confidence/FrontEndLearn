@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			.btn{
+				width: 42px;
+				height: 21px;
+				color: #fff;
+				background-color: #5470C6;
+				border: none;
+			}
+			
+		</style>
+	</head>
+	<script src="https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.min.js"></script>
+	<body>
+		
+		最小值：<input id="min" type="text" placeholder="请输入" size="10"/>
+		最大值：<input id="max" type="text" placeholder="请输入" size="10"/>
+		数量：<input id="num" type="text" placeholder="请输入" size="10"/>
+		排序：<select id="sortMethod">
+			<option value="a">从小到大</option>
+			<option value="b">从大到小</option>
+		</select>
+		<button class="btn">生成</button>
+		<div id="main" style="width: 600px;height:400px;"></div>
+		
+	</body>
+	<script>
+		//用来判断输入是否合法
+		let flag = true
+		
+		// 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            tooltip: {},
+            xAxis: {
+            },
+            yAxis: {},
+            series: [{
+                type: 'bar'
+            }]
+        };
+        
+        //封装一个检验函数，参数为元素（即要检验的input标签），第二个参数为最小值，第三个参数为最大值
+        function validate (element, minNum, maxNum) {
+        	
+        	element.addEventListener('change', function () {
+        		
+        		if(this.value < minNum || this.value > maxNum || !Number.isInteger(parseFloat(this.value))) {
+        			
+        			flag = false
+        			alert("输入内容有误")
+        			
+        		} else {
+        			flag = true
+        		}
+        		
+        	})
+        	
+        }
+		
+		validate(min, 1, 100)
+		validate(max, 1, 100)
+		validate(num, 1, 10)
+		
+		document.querySelector('.btn').addEventListener('click', function () {
+			
+			let result1 = []
+			
+			let result2 = []
+			
+			let maxNum = parseInt(max.value)
+			
+			let minNum = parseInt(min.value)
+			
+			let nNum = parseInt(num.value)
+			
+			if(maxNum > minNum && flag) {
+				
+				var content = parseInt((maxNum - minNum) / nNum)
+				
+			} else {
+				
+				flag = false
+        		alert("输入内容有误")
+        		return
+				
+			}
+			
+			if(content) {
+				
+				for(let i = 0; i < nNum; i++) {
+					
+					result2.push(i+1)
+					
+					if(i == 0) {
+						result1.push(minNum)
+					} else if (i == nNum - 1) {
+						result1.push(maxNum)
+					} else {
+						minNum = minNum + content
+						result1.push(minNum)
+					}
+					
+				}
+				
+			}
+			
+			if(sortMethod.value == 'a') {
+				
+				option.xAxis.data = result2
+				option.series[0].data = result1
+				
+			} else {
+				
+				option.xAxis.data = result2.reverse()
+				option.series[0].data = result1.reverse()
+				
+			}
+			
+			// 使用刚指定的配置项和数据显示图表。
+        	myChart.setOption(option);
+			
+		})
+		
+	</script>
+</html>

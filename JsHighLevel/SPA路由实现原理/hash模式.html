@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>hash模式实现单页面路由</title>
+		<style type="text/css">
+			#divId{
+				width: 200px;
+				height: 100px;
+				font-size: 33px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a data-url='/aa'>aa</a></li>
+			<li><a data-url='/bb'>bb</a></li>
+			<li><a data-url='/cc'>cc</a></li>
+		</ul>
+		<div id="divId"></div>
+	</body>
+	<script>
+		
+		/*
+		 实现原理讲解
+		 主要是通过window.location.hash对象来实现的
+		 因为他的特点在于当页面的url产生变化时，当前页面不会刷新
+		 主要是通过对window对象的hashchange事件进行监听
+		 * */
+		let arr = document.getElementsByTagName('a')
+		
+		let paths = [
+			{path: '/aa',pathData: 'aaaaaaaaaaa'},
+			{path: '/bb',pathData: 'bbbbbbbbbbb'},
+			{path: '/cc',pathData: 'ccccccccccc'}
+		]
+		
+		//获取当前页面的路径
+		let path
+		
+		let divId = document.querySelector('div')
+		
+		for(let i = 0;i<arr.length;i++) {
+			
+			arr[i].addEventListener('click',function () {
+				
+//				console.log(arr[i].getAttribute('data-url'))
+				
+				window.location.hash = arr[i].getAttribute('data-url')
+				
+				path = arr[i].getAttribute('data-url')
+			
+			})
+			
+		}
+		
+		window.addEventListener('hashchange',function () {
+			
+			paths.forEach( item => {
+			
+				if(item.path == path) {
+					
+					divId.innerHTML = item.pathData
+					
+				}
+			
+			})
+		
+		})
+		
+		
+	</script>
+</html>

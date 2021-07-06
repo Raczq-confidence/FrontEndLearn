@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 * 1.什么是数据？
+	 * 本质上是存储在内存中代表特定信息的二进制数据，也就是0101......
+	 * 
+	 * 2.什么是内存？
+	 * 内存条通电后产生的可存储数据的空间(临时的)
+	 * 内存变量：
+	 * (1)栈内存 存储全局变量，局部变量
+	 * (2)堆内存 存储对象
+	 * 
+	 * 3.什么是变量？
+	 * 可变化的量，由变量名和变量值组成
+	 * 每一个变量对应一块小内存
+	 * 变量名用来查找对应的内存
+	 * 变量值就是内存中保存的数据
+	 * 
+	 * 4.数据、变量、内存之间的关系？
+	 * 
+	 * 
+	 */
+	
+//	let obj = {name:'alice'};
+//	let a = obj;
+//	let b = {name:'alice'};
+//	console.log(a===obj);//true 两个对象指向同一块内存空间
+//	console.log(b==obj,b===obj);//false false 两个对象虽然数值相同，但是并不指向同一块内存空间
+//	console.log(b.name==obj.name);//true
+//	console.log('-------------------');
+//	let c = {
+//		name : 'alice',
+//		age : 12,
+//		msg : null
+//	}
+//	console.log(c);
+
+	let a = {name : 'alice'};
+	let b = a;
+	a = {age : 12};//此时右方为一个新的对象，当把他赋值给a时，a的地址便发生了改变，所以a与b不再相等
+	console.log(b.age);//undefined
+	function fn (obj) {
+		obj = {age : 15}
+	}
+	fn(a);
+	console.log(a.age);//12
+	
+	function fn2 (obj) {
+		obj.age = 10000;
+	}
+	fn2(a);
+	console.log(a.age);//10000 通过函数可以修改变量里储存的值
+	
+	console.log('下方超重点------------');
+	//js在调用函数传递变量参数时，使用的是值传递
+	let c = {name:'alice'}
+	function fn3 (obj) {
+		obj = c;
+	}
+	fn3(a);
+	console.log(a);//{age:10000}
+	
+	let x = 1;
+	function fn4 (obj) {
+		obj = 4;
+	}
+	fn4(x);
+	console.log(x);//1
+
+</script>

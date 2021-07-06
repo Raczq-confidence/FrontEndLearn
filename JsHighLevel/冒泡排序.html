@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>冒泡排序</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		//冒泡排序
+		
+		let arr = [12,8,15,16,1,24]
+		
+		for(let i=0; i < arr.length-1; i++){
+			
+			for(let j=0; j < arr.length-1-i; j++){
+				
+				if(arr[j]>arr[j+1]) {
+					
+					let temp = arr[j]
+					arr[j] = arr[j+1]
+					arr[j+1] = temp
+					
+				}
+				
+			}
+			
+		}
+		
+		console.log(arr)
+		
+		
+	</script>
+</html>

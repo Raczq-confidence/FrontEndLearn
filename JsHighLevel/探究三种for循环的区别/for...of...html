@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: cornflowerblue;
+				border: 1px black solid;
+				margin: 10px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	<script>
+		let divs = document.getElementsByTagName('div');
+		for(let i of divs){
+			i.addEventListener('click',function () {
+				this.style.background = 'pink';				
+			});
+		}
+	</script>
+</html>

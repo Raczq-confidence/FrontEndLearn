@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--
+		1.产生：在嵌套函数定义执行完成时产生了(而不是在调用的时候)
+		2.死亡：在嵌套的内部函数成为垃圾对象的时候
+	-->
+	<script type="text/javascript">
+		function fn1 () {
+			let a = 2;
+			//因为用的是let，所以在这一句之后才产生(函数已经提升，内部函数对象已经创建)
+			function fn2 () {
+				a++;
+				console.log(a);
+			}
+			return fn2;
+		}
+		let fn = fn1();
+		//console.log(fn);
+		fn();//3
+		fn();//4 闭包并未消失
+		
+		fn1()();//3
+		
+		fn1()();//3
+		
+		fn();//5
+	</script>
+</html>

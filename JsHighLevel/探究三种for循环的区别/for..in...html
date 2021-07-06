@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: cornflowerblue;
+				border: 1px black solid;
+				margin: 10px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	<script>
+		let a = ['a','b','c','d'];
+		for(let i in a){
+			console.log(a[i]);
+		}
+		let divs = document.getElementsByTagName('div');
+//		for (var i in divs) {
+//			divs[i].addEventListener('click',function () {
+//				divs[i].style.background = 'pink';//与for.html中的原因相同
+//			})
+//		}
+		for(let i in divs){
+			divs[i].addEventListener('click',function () {
+				divs[i].style.background = 'pink';//可以执行，但是会报错divs[i].addEventListener is not a function
+			});
+		}
+		console.log(divs);
+		//*注意：for in之所以报错的原因是因为divs是个伪数组，并且for in是使用下标遍历
+		//它其实是HTMLCollection，他的结构类似于[div,div,div,length]
+		//因为divs[length]是空的，所以他没有addEventListener这个方法
+	</script>
+</html>

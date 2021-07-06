@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ES6 proxy实现arr[-1]</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		let arr = [1,2,3,4,5]
+		
+		arr = new Proxy(arr,{
+			get(target,prop) {
+				
+				if(prop < 0) {
+					//在计算之前需要将prop转换为数字
+					return target[target.length+prop*1]
+				}
+				return target[prop]
+				
+			}
+			
+		})
+		
+		console.log(arr[-1])
+		
+	</script>
+</html>

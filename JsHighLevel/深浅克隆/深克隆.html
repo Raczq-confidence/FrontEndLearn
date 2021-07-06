@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>深克隆</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		/*
+		 * 
+		 */
+		
+		let obj = {
+			
+			a : 10,
+			b : [1,2,3],
+			c : {
+				x : 12
+			},
+			d : /^\d+$/,
+			e : function () {
+				
+			}
+ 			
+		}
+		
+		//方式一
+//		let obj2 = JSON.parse(JSON.stringify(obj))
+		
+		/*
+		 * 这种实现方式在项目中比较常见
+		 * 先转换为字符串再转换为对象，会开辟新的空间
+		 * 弊端是当原来的对象属性中有函数，日期，正则等JSON.stringify都会出问题
+		 */
+		
+		//方式二
+		function deepClone (obj) {
+			//创建新的对象(通过这种方式创建的对象或者对象实例，他们的构造函数都是相同的)
+			let newObj = new obj.constructor()
+			
+			//判断传入的实参是否为空
+			if( obj === null ) return null
+			
+			//判断实参是否为对象(如果不为对象，则直接返回)
+			if( typeof obj !== "object" ) return obj
+			
+			//判断传入实参是否为函数
+			if( obj instanceof Function ){
+				
+				//创建返回值为新的Function实例
+				return new Function(obj)
+				
+			}
+			
+			//判断传入实参是否为正则表达式
+			if( obj instanceof RegExp ){
+				
+				//创建返回值为新的正则表达式实例
+				return new RegExp(obj)
+				
+			}
+			
+			//判断传入实参是否为Date
+			if( obj instanceof Date ){
+				
+				//创建返回值为新的Function实例
+				return new Date(obj)
+				
+			}
+			
+			//
+			for( let key in obj ){
+				
+				//需要对数据进行过滤
+				newObj[key] = deepClone(obj[key])
+				
+			}
+			
+			return newObj
+			
+		}
+		
+		let obj2 = deepClone(obj)
+		
+		console.log(obj,obj2)
+		
+		console.log('obj2 === obj',obj2 === obj)
+		
+		console.log('obj2.c === obj.c',obj2.c === obj.c)
+	</script>
+</html>

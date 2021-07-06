@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function Person (name ,age) {
+		this.name = name;
+		this.age = age;
+		
+	}//构造函数
+	let person = new Person('alice',12);
+	console.log(typeof person);//object 这是一个对象
+	console.log(typeof Person,Person instanceof Object);//function true 函数在不调用时类型为function，同时他也是一个对象
+	console.log(typeof Person());//undefined 在构造函数未开辟空间之前，他的调用结果就是undefined
+	console.log(typeof new Person());//object 此时是一个对象
+	console.log('----------------------------------');
+	
+	/*
+	 * 1.undefined与null的区别？
+	 * undefined是定义了但是未赋值
+	 * null定义并赋值了只是值为空(复习)
+	 * 
+	 * 2.严格区别基本类型和引用类型
+	 * 基本类型：保存的就是基本类型的数据
+	 * 引用类型：保存的就是地址值
+	 * 
+	 */
+	let a;
+	console.log(a,typeof a);
+	a = null;
+	console.log(a,typeof a);//typeof无法判断null和object！！！
+	
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person (name) {
+				console.log(this);
+				this.name = name;
+				
+				this.setName = function (name) {
+					this.name = name;
+					console.log(this);
+				}
+				
+				this.getName = function () {
+					console.log(this);
+					return this.name;
+				}
+			}
+			
+			Person('alice'); //window
+			
+			let person = new Person('alice'); //Person{} 可以理解为person
+
+			person.setName('bob');//Person{} 可以理解为person
+			
+			let obj = {}
+			
+			person.setName.call(obj,'clarie');//obj
+			
+			console.log('===================');
+			
+			let obj2 = {
+				name : 'alice',
+				age : 12,
+				getName : function () {
+					console.log(this.name);
+					return this.name;
+				},
+				importantBlock : function () {
+					console.log(this);
+//					setTimeout( () => {
+//						console.log(this);
+//					},2000);
+				}
+			}
+			obj2.getName();//alice
+			
+			obj2.importantBlock();//obj2 window(window的原因是因为闭包)
+			
+			console.log('=====上面是为了测试=>的作用=====');
+			let obj3 = {
+				importantBlock : function () {
+					console.log(this);
+					(function testThis () {
+						console.log(this);
+					})();
+				}
+			}
+			obj3.importantBlock();
+		</script>
+	</body>
+</html>

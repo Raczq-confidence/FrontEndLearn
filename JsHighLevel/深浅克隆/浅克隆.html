@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浅克隆</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		/*
+		 * 浅克隆只克隆了第一层，当我修改克隆后的对象中的对象属性时，原来的对象相应的对象属性也会修改
+		 * 原因在于浅克隆，原来对象中属性为对象的属性，他的地址对象被赋值给了克隆对象
+		 */
+		
+		let obj = {
+			
+			a : 10,
+			b : [1,2,3],
+			c : {
+				x : 12
+			},
+			d : /^\d+$/
+ 			
+		}
+		
+		let obj2 = {}
+		
+		//浅克隆
+		for(let key in obj){
+			
+			if(!obj.hasOwnProperty(key)) break;
+			obj2[key] = obj[key]
+			
+		}
+		
+		console.log(obj,obj2)
+		
+		console.log('obj == obj2',obj == obj2)//false
+		
+		console.log('obj === obj2',obj === obj2)//false
+		
+		console.log('obj.__proto__ == obj2.__proto__',obj.__proto__ == obj2.__proto__)//true
+		
+		obj2.c.x = 1000
+		
+		console.log(obj.c.x)
+		
+		/*
+		 * 所有通过 = {} 创建的对象，他们的隐式原型都是相等的，因为他们的构造函数都相同
+		 */
+		
+	</script>
+</html>

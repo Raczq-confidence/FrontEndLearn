@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let arr = [12,23,43,13,14,43]
+		
+		/* filter 过滤，
+			参数为一个函数，返回一个新的符合条件的项组成的数组，不修改原数组
+			函数中提供一个过滤条件，函数中传入一个参数
+			函数书写方式类似于 
+			function (num) {
+				return num > 12
+			}
+		 */
+		console.log('filter',arr.filter(a => a > 14))
+		
+		/* every some
+			两种过滤方法，用法与filter类似
+			都传入一个函数用来当作判断条件 every需要每一项都为true，some有一项为true即可
+			返回值为布尔值
+		 */
+		console.log('every',arr.every(num => num < 100))
+		console.log('some',arr.some(num => num > 45))
+		
+		/* find 查找
+			返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined
+			用法与filter类似
+			同时还有一个findIndex函数，这个只返回索引，没有就返回-1
+		 */
+		function aboutFind(num) {
+			return num > 14
+		}
+		
+		console.log('find',arr.find(aboutFind))
+		console.log('findIndex',arr.findIndex(aboutFind))
+		
+		/* map 使数组中的每一项返回某个数组
+			用法与filter类似，返回新数组
+			传入的函数类似于
+			function (num){
+				函数中必须有return 否则数组每一项为undefined
+				return num.toString()
+			}
+		 */
+		console.log('map',arr.map(num => num.toString()))
+		
+		/* reduce 累加器
+			对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。
+			传入的函数类似于
+			function (acc,num) {
+				return acc + num
+			}
+		 */
+		console.log('reduce',arr.reduce((acc,num) => acc + num.toString())) // 此行代码效果类似于join('')
+		
+		/* indexOf 查找数组中第一次出现该项的索引
+			采取严格比较模式 也就是===
+			第一个参数出入要查找的元素
+			第二个参数传入从数组第几项开始查找
+		 */
+		console.log('indexOf',arr.indexOf(43,-1))
+		
+		/* includes 查找数组是否包含某一项
+			返回一个布尔值，同样采取严格比较
+			第一个参数出入要查找的元素
+			第二个参数传入从数组第几项开始查找
+			目前也常用在代码优化上，比如
+			if(a == 1 || a == 2 || a == 3) 可以优化为 if([1,2,3].includes(a))
+		 */
+		console.log('includes',arr.includes(43,-1))
+		
+		/* 
+		 常见的函数此处不在赘述
+			如push，pop，shift，unshift，slice(start,end)，splice(start,end,...数据)
+			reverse 翻转数组，修改原数组
+			join 用提供的连接符将数组中的每一项连接起来
+			sort 排序 默认从小到大的顺序，可以通过传入的函数进行排序方式修改
+		 */
+	</script>
+</html>

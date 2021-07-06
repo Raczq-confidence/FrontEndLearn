@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function myNew (fn,...args) {
+			//判断fn是不是函数
+			if(typeof fn !== 'function') {
+				console.error('第一个参数必须为函数')
+				return
+			}
+			
+			args = args ? args : []
+			
+			//创建一个函数原型的对象
+			let newObj = Object.create(fn.prototype)
+			
+			//将this指针新创建的对象
+			let result = fn.apply(newObj,args)
+			
+			let isObject = typeof result === 'object' && result !== null
+			
+			let isFunction = typeof result === 'function'
+			
+			if(isObject || isFunction) {
+				return result
+			}
+			return newObj
+			
+		}
+		
+		function Person (age) {
+			this.age = age
+			return []
+		}
+	</script>
+</html>

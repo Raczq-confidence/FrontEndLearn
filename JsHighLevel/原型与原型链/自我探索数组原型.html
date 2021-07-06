@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let a = [1,2,3];
+		console.log(a.__proto__);//Array(0)
+		console.log(a.__proto__.prototype);//undefined
+		//上面的语句结果是undefined，说明Array(0)并不是函数，而是一个对象实例(空object实例对象)
+		//所以Array(0).__proto__属性的结果是Object.prototype,下面语句可以证明
+		console.log(a.__proto__.__proto__ === Object.prototype);//true
+		
+		console.log(Array(0) === Array.prototype);//false
+		/*
+		console.log(a instanceof Array);//true
+		console.log(a instanceof Function);//false
+		*/
+		
+		console.log(Array.prototype);
+		
+		function Foo () {
+			
+		}
+		let foo = new Foo();
+		console.log(foo);
+	</script>
+</html>

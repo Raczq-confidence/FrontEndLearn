@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现call</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function myCall(context) {
+		
+			//基础类型转换
+		    if(context === null || context === undefined) {
+		        context = window
+		    } else if(typeof context === 'string') {
+		        context = new String(context)
+		    } else if(typeof context === 'boolean') {
+		       	context = new Boolean(context) 
+		    } else if(typeof context === 'number') {
+		        context = new Number(context)
+		    }
+			
+			//定义一个函数返回结果
+			var result
+		    
+		    //保存需要被调用的函数到context对象上
+		    context.fn = this
+		    
+		    //获取除第一个参数context外的其他参数
+		    var args = Array.from(arguments).slice(1)
+			
+			//将函数执行的返回结果存入result
+			result = context.fn(...args)
+		    
+		    //将context上的fn属性清除
+		    delete context.fn
+		    
+		    //返回值为result
+			return result
+		}
+		
+		// 将此函数暴露在Function的原型上
+		Function.prototype.myCall = myCall
+		
+		function test (a,b) {
+			console.log(this,this === obj)
+			return a + b
+		}
+		
+		var obj = {}
+		
+		test.call(obj,1,2)
+		test.myCall(obj,1,2)
+//		test.call(undefined,1,2)
+//		test.myCall(undefined,1,2)
+	</script>
+</html>

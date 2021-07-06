@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+		 * 测试题1
+		 */
+		var x = 10;
+		function fn () {
+			console.log(x);
+		}
+		function show (f){
+			var x = 20;
+			f();
+		}
+		show(fn);//10 作用域在函数定义时就已经形成
+		
+		/*
+		 * 测试题2
+		 */
+		var fn = function () {
+			console.log(fn);
+		}
+		fn();//输出本函数的函数体，在自己的作用域找没找到，去全局找找到了
+		
+		var obj = {
+			fn2 : function () {
+				console.log(this.fn2);//输出本函数的函数体，在自己的作用域找找到了
+				console.log(fn2);//报错，在自己的作用域找没找到，去全局找也没找到
+			}
+		}
+		obj.fn2();
+	</script>
+</html>
