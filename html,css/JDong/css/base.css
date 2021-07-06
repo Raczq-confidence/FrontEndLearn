@@ -1,0 +1,15 @@
+﻿/* ************
+ * 日期：2020/7/16
+ * 作者：Raczq
+ * 用途：电商平台(基本的一些设置)
+ *
+*/
+.header{
+	width: 1002px;
+	height: 170px;
+	background: #F6F6F6;
+	padding: 0 0 0 190px;
+	margin: auto;
+	position: relative;
+}
+

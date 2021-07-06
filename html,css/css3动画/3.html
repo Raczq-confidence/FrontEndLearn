@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background-color: #192a56;
+			}
+			div{
+				height: 100vh;
+				width: 100vw;
+				background-color: #fbc531;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: scale(0);
+				animation-name: scale,radius;
+				animation-duration: 4s;
+				animation-fill-mode: forwards;
+			}
+			div::after{
+				content: 'wdnmd.com';
+				color: #fff;
+				font-size: 4em;
+				opacity: 0;
+				animation-name: op;
+				animation-duration: 2s;
+				animation-delay: 4s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes scale{
+				25%{
+					transform: scale(0.5) rotate(360deg);
+					background-color: #e84118;
+				}
+				50%{
+					transform: scale(1);
+					background-color: #8c7ae6;	
+				}
+				75%{
+					background-color: #487eb0;	
+					transform: scale(0.5) rotate(360deg);
+				}
+				100%{
+					background-color: #353b48;	
+					transform: scale(1);
+				}	
+			}
+			@keyframes radius{
+				25%{
+					border-radius: 50%;
+				}
+				50%{
+					border-radius: 0%;
+				}
+				75%{
+					border-radius: 50%;
+				}
+				
+			}
+			@keyframes op{
+				to{
+					opacity: 0.8;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

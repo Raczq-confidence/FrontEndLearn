@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文件管理</title>
+	</head>
+	<body>
+		<input type="file" />
+		<p id="text"></p>
+	</body>
+	<script type="text/javascript">
+		
+		let file = document.querySelector('input')
+		
+		let reader = new FileReader()
+		
+		file.onchange = function () {
+			reader.readAsText(this.files[0])
+//			console.log(reader)
+			
+			reader.onload = function () {
+				text.innerText = this.result
+			}
+			
+			
+		}
+		
+	</script>
+</html>

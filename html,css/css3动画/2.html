@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin : 0;
+			}
+			body{
+				width: 100vw;
+				height: 100vh;
+				background-color: #192a56;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box1{
+				height: 400px;
+				width: 400px;
+				border: 1px solid #BBFFAA;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background-color: #fbc531;
+				animation-name: hd;
+				animation-duration: 2s;
+			}
+			@keyframes hd{
+				25%{
+					transform: translateX(300px);
+				}
+				50%{
+					transform: translate(300px,300px);
+				}
+				75%{
+					transform: translateY(300px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="box2"></div>
+		</div>
+	</body>
+</html>

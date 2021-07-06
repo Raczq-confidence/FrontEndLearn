@@ -1,0 +1,47 @@
+﻿/* ************
+ * 日期：2020/08/03
+ * 作者：Raczq
+ * 用途：京东左边的导航栏
+ *
+*/
+/*设置背景*/
+body{
+	background-color: #bfa;
+}
+
+/*设置导航栏容器*/
+.list-wapper{
+	/*设置导航栏宽度*/
+	width: 175px;
+	/*设置背景颜色*/
+	background-color: #fff;
+	/*设置导航栏居中*/
+	margin : 50px auto;
+	/*设置字体大小*/
+	font-size: 15px;
+}
+
+/*设置斜杠大小*/
+em{
+	margin-right: -6px;	
+	margin-left: -6px;
+}
+
+.left-list{
+	/*设置上下内边距*/
+	padding: 10px 0;
+}
+
+.left-list li{
+	/*设置导航栏列表与容器之间的间距*/
+	padding :0 10px;
+}
+
+/*设置导航栏列表覆盖效果*/
+.left-list li:hover{
+	background-color: #D9D9D9;
+}
+
+a:hover{
+	color: #f00;
+}

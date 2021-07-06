@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500">
+			<span>当前浏览器不支持画布元素</span>
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		
+		window.onload = function () {
+			let testNode = document.querySelector('#test')
+			//判断画布中是否有画笔(渲染上下文)
+			if(testNode.getContext) {
+				let ctx = testNode.getContext('2d')
+				
+				/*
+				 * 	ctx.fillRect(x,y,width,height) x,y代表以画布左上角为参照的偏移量
+				 		不需要也不允许加单位
+				 	ctx.strokeRect(x,y,width,height)
+				 	
+				 	lineJoin : miter(直角)
+				 			   bevel(斜角)
+				 			   round(圆角)
+				 */
+				
+				ctx.fillStyle = 'blue'
+				ctx.strokeStyle = 'deepskyblue'
+				ctx.lineWidth = 50
+				ctx.lineJoin = 'round'
+				
+				//填充的矩形
+				ctx.fillRect(0,0,100,100)
+				//只有边框的矩形
+				//100: 99.5 --- 100.5(99-101)
+//				ctx.strokeRect(100,100,100,100)
+				//100.5: 100 --- 101
+				ctx.strokeRect(100.5,100.5,100,100)
+				
+				ctx.clearRect(100.5,100.5,100,100)
+			}
+		}
+	</script>
+</html>

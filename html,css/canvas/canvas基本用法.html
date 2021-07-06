@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			1.canvas默认具有宽高 width: 300px height: 150px
+			2.canvas在可以渲染的时候会忽略其中的替代内容
+				不能渲染时则显示其中的替换内容
+			3.html中为canvas设置宽高属性，只影响画布本身，不影响画布内容
+				css中为canvas设置属性宽高时，不仅影响画布本身，还会使画布中的内容等比缩放
+		-->
+		<canvas id="test">
+			<span>当前浏览器不支持画布元素</span>
+		</canvas>
+		<!--<div id="div1"></div>
+		<div id="div1"></div>-->
+	</body>
+	<script type="text/javascript">
+		
+		/*let divList = document.querySelectorAll('#div1')
+		console.log(divList)//他的类型是NodeList
+		divList[1].innerText = '爷的id是div1，但其实我是第二个哒'
+		console.log(div1)//他的类型是HTMLCollection*/
+		
+		window.onload = function () {
+			let testNode = document.querySelector('#test')
+			//判断画布中是否有画笔(渲染上下文)
+			if(testNode.getContext) {
+				let ctx = testNode.getContext('2d')
+			}
+		}
+	</script>
+</html>

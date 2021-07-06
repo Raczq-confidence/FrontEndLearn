@@ -1,0 +1,136 @@
+﻿/* ************
+ * 日期：2020/08/06
+ * 作者：Raczq
+ * 用途：小米商城主页
+ *
+*/
+/*设置顶部图片*/
+.img{
+	/*设置长宽*/
+	width: 100%;
+	height: 120px;
+	/*设置a标签为块级元素*/
+	display: block;
+	/*设置a标签背景*/
+	background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/271a0ad51f0b0760ed9cb46791fb2b31.jpg?w=5120&amp;h=240);
+	background-repeat: no-repeat;
+	/*设置背景图片大小与位置*/
+	background-position: 50%;
+	background-size: auto 120px;
+}
+
+/*设置顶部导航栏*/
+.site-topbar{
+	/*设置高宽*/
+	width: 100%;
+	height: 40px;
+	/*设置背景颜色*/
+	background-color: #333;
+	/*设置字体颜色*/
+	color: #B0B0B0;
+}
+
+.site-topbar li:not(.line){
+	line-height: 40px;
+	font-size: 12px;
+}
+
+.site-topbar a{
+	cursor: pointer;
+}
+
+/*设置鼠标移入效果*/
+.site-topbar li:not(.cart) a:hover{
+		color: #fff;
+}
+
+/*设置第一项的左边距*/
+.left-list:first-child{
+	margin-left: 150px;
+}
+
+/*设置最后一项的右边框*/
+.right-list:last-child{
+	margin-right: 150px;
+}
+
+/*设置每个列表项中间的竖线*/
+.line{
+	/*设置长宽*/
+	width: 2px;
+	height: 10px;
+	/*设置背景颜色*/
+	background-color: #3F423C;
+	/*设置外边距*/
+	margin: 15px 6.6px;
+}
+
+/*设置左列表*/
+.left-list li{
+	/*设置列表左浮动*/
+	float: left;
+}
+
+/*设置右列表*/
+.right-list li{
+	/*设置列表右浮动*/
+	float: right;
+}
+
+/*设置购物车效果*/
+.right-list .cart{
+	margin-left: 20px;
+	padding: 0 10px;
+}
+
+/*设置鼠标移入下载效果*/
+.download{
+	position: relative;
+}
+.download div{
+	width: 130px;
+	height: 130px;
+	padding-top: 10px;
+	color: #333;
+	font-size: 14px;
+	text-align: center;
+	box-shadow: 0 1px 5px #aaa;
+	display: none;
+	position: absolute;
+	top: 41px;
+    left: -41px;
+}
+
+.download:hover div{
+	display: block;	
+}
+
+/*设置鼠标移入购物车效果*/
+.cart{
+	position: relative;
+	background-color: #424242;
+}
+
+.right-list .cart:hover{
+	background-color: #fff;
+	color: #FF7C23;
+}
+
+.cart div{
+	width: 360px;
+	height: 85px;
+	padding: 20px 20px;
+	font-size: 12px;
+	text-align: center;
+	color: #333;
+	line-height: 85px;
+	position: absolute;
+	top: 41px;
+    left: -329px;
+	box-shadow: 0 1px 5px #aaa;
+	display: none;
+}
+
+.cart:hover div{
+	display: block;
+}

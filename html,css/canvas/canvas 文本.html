@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas 文本</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script>
+		
+		let canvas = document.querySelector('#test')
+		
+		if(canvas.getContext) {
+			var ctx = canvas.getContext('2d')
+		}
+		
+		ctx.fillStyle = 'pink'
+		//画笔的font属性需要同时设置字体大小和字体样式，缺一不可
+		//	（注：样式只有一种，写错也是那一种）
+		ctx.font = "50px sans"
+		ctx.fillText("前端什么时候是个头",100,100)
+//		ctx.strokeText("前端什么时候是个头",100,100)
+		
+		console.log(ctx.measureText("前端什么时候是个头"))
+		/*
+		 	存在textAlign,textBaseLine
+		 	这两个的属性值都是以原点为基准的
+		 	（例如上面的原点在100,100）
+		 
+		 * */
+	</script>
+</html>

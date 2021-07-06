@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #192a56;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: #fff;
+				/*导入动画组件*/
+				animation-name: hd;
+				/*设置动画时间*/
+				animation-duration: 2s;
+			}
+			@keyframes hd{
+				0%{
+					background-color: #fbc531;
+				}
+				
+				25%{
+					background-color: #44bd32;
+					/*设置大小变化*/
+					transform: scale(2);
+				}
+				
+				50%{
+					background-color: #8c7ae6;
+				}
+				
+				75%{
+					transform: scale(1);
+				}
+				
+				100%{
+					background-color: #40739e;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+		</div>
+	</body>
+</html>

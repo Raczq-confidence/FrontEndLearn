@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				border: 0;
+				padding: 0;
+				/*将ul等自带的外边距去掉*/
+			}
+			ul,ol,li{
+				list-style: none;
+			}
+			#menuId{
+				width: 200px;
+				margin : 10px;
+				border: 1px solid #f00;
+			}
+			#menuId ul{
+				margin : 5px;
+			}
+			#menuId ul li{
+				clear : both;
+				/*习惯写法,不写也OK*/
+				height: 30px;
+				margin: 5px;
+				width: 90%;
+				background: #ddd;
+				text-align: center;
+				line-height: 30px;
+				position: relative;
+			}
+			#menuId ul li:hover{
+				background: #5d5d5d;
+			}
+			#menuId ul li div.popUp{
+				width: 100px;
+				height: 30px;
+				background: #f00;
+				position: absolute;
+				top: 0;
+				right: -100px;
+				display: none;
+			}
+			#menuId ul li:hover div.popUp{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menuId">
+			<ul>
+				<li>
+					<div class="popUp">
+						弹出菜单1
+					</div>
+				</li>
+				<li>
+					<div class="popUp">
+						弹出菜单2
+					</div>
+				</li>
+				<li>
+					<div class="popUp">
+						弹出菜单3
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas绘制圆形</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script>
+		let canvas = document.querySelector('#test')
+		if(canvas.getContext){
+			var ctx = canvas.getContext('2d')
+		}
+		
+		ctx.moveTo(100,100)
+		
+		/*ctx.arc(x,y,半径,开始角度,结束角度,是否逆时针) 弧度的表示方法: x = degree * Math.PI/180
+				true: 逆时针
+				flase: 顺时针(默认情况)
+		*/
+		ctx.arc(100,100,50,0,270*Math.PI/180)
+		
+		ctx.closePath()
+		
+		ctx.stroke()
+	</script>
+</html>

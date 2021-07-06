@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas 图片</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test"></canvas>
+	</body>
+	<script>
+		
+		let canvas = document.querySelector('#test')
+		canvas.width = document.documentElement.offsetWidth
+		canvas.height = document.documentElement.offsetHeight
+		
+		if(canvas.getContext) {
+			var ctx = canvas.getContext('2d')
+		}
+		
+		let img = new Image()
+		
+		img.src = '../img/banner01.jpg'
+		
+		img.onload = function () {
+			//canvas绘制图片 drawImage(图片,x,y,width,height)
+			ctx.drawImage(img,0,0)
+			
+			//canvas绘制背景 createPattern(img,设置是否重复样式)
+			let pattern = ctx.createPattern(img,'repeat')
+			ctx.fillStyle = pattern
+			ctx.fillRect(300,300,300,300)
+		}
+	</script>
+</html>

@@ -1,0 +1,27 @@
+h1 {
+	color: #555555;
+	font-style: italic;
+	text-decoration: underline;
+	text-transform: uppercase;
+	letter-spacing: 0.5em;
+	word-spacing: 1em;
+}
+
+body{
+	font-family: "arial, helvetica, sans-serif";
+	font-size: 30px;
+	font-weight: 800;
+}
+
+body p{
+	color: royalblue;
+	line-height: 1.5em;
+}
+
+.container{
+	background-color: floralwhite;
+	width: 60%;
+	margin: auto;
+}
+
+

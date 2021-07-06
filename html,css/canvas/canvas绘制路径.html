@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas绘制路径</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script>
+		
+		let canvas = document.querySelector('#test')
+		if(canvas.getContext) {
+			var ctx = canvas.getContext('2d')
+		}
+		
+		//开始之前清空路径容器
+		ctx.beginPath()
+		
+		//设置开始点
+		ctx.moveTo(100,100)
+		
+		//开始绘制路径，目标为绘制一个三角形
+		ctx.lineTo(100,200)
+		ctx.lineTo(200,200)
+		
+		//路径闭合
+		ctx.closePath()
+		
+		//设置样式时需要用的API为save() restore(): 注意存储样式的结构为栈结构，save压栈，restorev出栈
+		ctx.save()
+		ctx.fillStyle = 'pink'
+		
+		ctx.strokeStyle = 'aliceblue'
+		ctx.lineWidth = 20
+		
+//		ctx.restore()//加上此句绘制颜色为黑色
+		
+		//路径绘制完成
+		ctx.stroke()//现在的状态为未填充
+		ctx.fill()//现在的状态为填充
+		
+		
+	</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.flex-box {
+				display: flex;
+				width: 740px;
+				flex-flow: row wrap;
+				column-gap: 20px;
+				row-gap: 20px;
+			}
+			
+			.flex-box div {
+				width: 200px;
+				height: 200px;
+				background-color: #BBFFAA;
+				color: #FFFFFF;
+				font-size: 5em;
+				line-height: 200px;
+				text-align: center;
+			}
+			
+			.flex-box div:nth-child(3) {
+				flex: 1;
+			}
+			
+			.flex-box div:nth-child(4) {
+				flex-basis: 50%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="flex-box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,105 @@
+﻿/* ************
+ * 日期：2020/08/03
+ * 作者：Raczq
+ * 用途：网易新闻右边框
+ *
+*/
+/*设置窗体背景*/
+body{
+	background-color: #bfa;
+	font-family: "Microsoft YaHei", 微软雅黑, 寰蒋闆呴粦, 瀹嬩綋, sans-serif;
+}
+
+/*设置外围容器*/
+.news-wapper{
+	/*设置容器大小*/
+	width: 359px;
+	/*设置容器背景*/
+	background-color: #fff;
+	/*设置容器位置*/
+	margin : 50px auto;
+	/*设置上边框*/
+	border-top: 1px #DDDDDD solid;
+}
+
+/*设置上标题*/
+.news-wapper h2{
+	/*设置标题大小以及加粗*/
+	font-size: 16px;
+	font-weight: bold;
+	/*设置标题上边框*/
+	border-top: 1px #f00 solid;
+	/*设置标题字体颜色*/
+	color: #404040;
+	
+	/*设置标题宽度，否则上边框会与父元素保持一致*/
+	/*这种解决方法太过死板建议注释*/
+	/*width: 40px;*/
+	
+	/*设置标题元素为行内块*/
+	display: inline-block;
+	/*设置标题的上边框与容器的上边框在同一像素*/
+	margin-top: -1px;
+	/*设置标题与上边框还有图片的距离*/
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/*设置图片标题*/
+.img-wapper h3{
+	/*设置标题大小以及加粗*/
+	font-size: 16px;
+	font-weight: bold;
+	/*设置标题字体颜色*/
+	color: #fff;
+	/*设置字体上移*/
+	margin-top: -28px;
+	/*设置标题与左边的距离*/
+	margin-left: 35px;
+}
+
+/*多出来的部分进行裁剪*/
+.img-wapper{
+	width: 359px;
+	height: 184px;
+	overflow: hidden;
+}
+
+/*设置列表容器位置*/
+.list-wapper{
+	margin-top: 20px;
+}
+
+/*设置列表*/
+.news-list{
+	/*设置字体大小*/
+	font-size: 14px;
+	/*设置字体格式*/
+	font-family: 瀹嬩綋;
+	/*设置字体颜色*/
+	color: #666;
+}
+
+/*设置列表项*/
+.news-list li{
+	/*设置列表项间距*/
+	margin-bottom: 10px; 
+}
+
+/*设置列表前面的点*/
+.news-list li::before{
+	content: '◼';
+	font-size: 5px;
+	color: #ddd;
+	margin-right: 5px;
+}
+
+/*设置鼠标移入效果*/
+.news-wapper h2:hover,li:hover{
+	color: #f00;
+}
+
+img:hover{
+	width: 361.5px;
+	height: 190.5px;
+}

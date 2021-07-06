@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas绘制签名</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+				background-color: pink;
+			}
+			#test{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				background-color: #BBFFAA;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="700" height="700"></canvas>
+	</body>
+	<script>
+		//本案例用来实现签名效果
+		let canvas = document.querySelector('#test')
+		if(canvas.getContext) {
+			var ctx = canvas.getContext('2d')
+		}
+		
+		//捕捉鼠标点击事件
+		document.onmousedown = function (e) {
+			e = e || window.event
+			
+			//清空路径栈
+			ctx.beginPath()
+			//设置初始点
+			ctx.moveTo(e.clientX - canvas.offsetLeft,e.clientY - canvas.offsetTop)
+			
+			//捕捉鼠标移动事件
+			document.onmousemove = function (e) {
+				e = e || window.event
+			
+				//开始绘制路径
+				ctx.lineTo(e.clientX - canvas.offsetLeft,e.clientY - canvas.offsetTop)
+				ctx.stroke()
+			}
+			
+			document.onmouseup = function (e) {
+				e = e || window.event
+				
+				document.onmousemove = document.onmouseup = null
+			}
+			
+		}
+		
+	</script>
+</html>

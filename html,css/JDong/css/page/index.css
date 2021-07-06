@@ -1,0 +1,122 @@
+﻿/* ************
+ * 日期：2020/07/16
+ * 作者：Raczq
+ * 用途：首页的css
+ *
+*/
+/*logo*/
+.logoDiv{
+	width: 190px;
+	height: 170px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/*顶部导航条*/
+.topMenu{
+	width: 100%;
+	height:29px;
+	background: #E3E4E6;
+	border-bottom: 1px solid #ddd;
+	/*position: absolute;
+	top: 0;
+	right: 0;*/
+	float: right;
+}
+/*顶部导航条左边的地址*/
+.topMenu label{
+	float: left;
+	padding: 0;
+	line-height: 29px;
+	font-size: 15px;
+	color: slategray;
+}
+/*顶部导航条左边地址的图标*/
+.topMenu i.addressIcon{
+	background: url(../../../img/icons/adress.png) no-repeat left top;
+	width: 22px;
+	height: 28px;
+	float: left;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.topMenu ul{
+	float: right;
+}
+.topMenu ul li{
+	float: left;
+	padding: 0 12px;
+	line-height: 29px;
+	color: #6f6e71;
+}
+.topMenu ul li.red{
+	color: #f00;
+}
+/*顶部导航条的竖线*/
+.topMenu ul em{
+	background: #6f6e71;
+	width: 1px;
+	height: 10px;
+	overflow: hidden;
+	padding: 0;
+	float: left;
+	margin: 9px 0 0 0;	
+}
+/*顶部导航条的倒三角*/
+.topMenu ul li i.popdownBtn{
+	width: 15px;
+	height: 15px;
+	background: url('../../../img/icons/popDown.png') no-repeat left top;
+	float: right;
+	margin: -22px -9px 0 50px;
+	cursor: pointer;/*使鼠标放上去可以变化*/
+}
+
+/*搜索框的区域*/
+.searchDiv{
+	width: 840px;
+	height:70px;
+	position: absolute;
+	top: 54px;
+	left: 320px;
+}
+/*搜索框*/
+input.headerSercher{
+	width: 493px;
+	height: 33px;
+	background: #fff;
+	border: 1px solid #f00;
+	float: left;
+	padding-left: 5px;
+	color: #6f6e71;
+}
+/*搜索按钮*/
+input.seachBtn{
+	width: 50px;
+	height: 35px;
+	background: url(../../../img/icons/seacherIcon.png) no-repeat 2px -1px;
+	background-color: #f00;
+	border: 0;
+	float: left;
+}
+input.seachBtn:hover{
+	background-color: darkred;
+}
+/*我的购物车*/
+.myShopDiv{
+	width: 188px;
+	height: 33px;
+	float: left;
+	border: 1px solid #ddd;
+	margin-left: 30px;
+	color: #FF0000;
+	line-height: 33px;
+	text-align: center;
+	background: url(../../../img/icons/shopIcon.png) no-repeat 9px -2px;
+	background-color: #fff;
+	cursor: pointer;
+}
+.myShopDiv:hover{
+	border: 2px red solid;
+}
