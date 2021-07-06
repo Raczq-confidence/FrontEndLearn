@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>取消请求</title>
+	</head>
+	<body>
+		<button onclick="project1()">发送project1</button>
+		<button onclick="project2()">发送project2</button>
+		<button onclick="cancelReq()">取消请求</button>
+	</body>
+	<script type="text/javascript" src="axios.min.js" ></script>
+	<script>
+		let cancel
+		
+		function project1 () {
+			if(typeof cancel == 'function'){
+				//cancel拦截的是上一个请求
+				cancel('此时已有请求发送')
+			}
+			
+			axios.get('http://localhost:5249/project1',
+				{
+					cancelToken : new axios.CancelToken(function excutor (c) {
+						cancel = c
+					})
+				}
+			)
+				.then(
+					response => {
+						console.log('project1请求发送成功',response.data)
+						cancel = null
+					},
+					error => {
+						if(axios.isCancel(error)){
+							//因为拦截请求失败
+							console.log(error.message)
+						} else{
+							//请求失败
+							cancel = null
+							console.log('project1请求发送失败')
+							//error为一个cancel类型的对象，只有message，没有stack
+							console.log(error.message)
+						}
+						
+					}
+				)
+		}
+		
+		function project2 () {
+			if(typeof cancel == 'function'){
+				cancel('此时已有请求发送')
+			}
+			
+			axios.get('http://localhost:5249/project2',
+				{
+					cancelToken : new axios.CancelToken(function excutor (c) {
+						cancel = c
+					})
+				}
+			)
+				.then(
+					response => {
+						cancel = null
+						console.log('project2请求发送成功',response.data)
+					},
+					error => {
+						if(axios.isCancel(error)){
+							console.log(error.message)
+						} else {
+							cancel = null
+							console.log('project2请求发送失败')
+							console.log(error.message)
+						}
+						
+					}
+				)
+		}
+		
+		function cancelReq () {
+			if(typeof cancel == 'function'){
+				cancel('强制取消请求')
+			} else {
+				console.log('没有可取消的请求')
+			}
+		}
+	</script>
+</html>

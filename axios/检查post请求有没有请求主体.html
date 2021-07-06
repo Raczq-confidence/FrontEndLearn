@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" src="axios.min.js" ></script>
+	<script>
+/*		axios.post('http://localhost:5249/project2')
+			.then( response => {
+				
+				console.log(response)
+				
+			} )
+			.catch( error => {
+				
+				console.log(error)
+				
+			} )*/
+			
+			axios.post('http://localhost:5249/project2',
+					{
+//						params : {
+							id : 2,
+							message : 'project2'
+//						}//当请求为post请求时，不需要添加将参数放在params对象中
+					}
+				)
+				.then( response => {
+				
+					console.log(response)
+					
+				} )
+				.catch( error => {
+					
+					console.log(error)
+					
+				} )
+				//经过验证证明只有post请求有请求体
+	</script>
+</html>
