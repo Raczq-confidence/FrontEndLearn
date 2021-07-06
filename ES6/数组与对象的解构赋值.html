@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		const A = ['aa','bb','cc','dd'];
+		
+		A.push('dd');
+		
+		console.log(A);//对于数组和变量的修改不算做对变量的修改，所以不报错
+		
+		//1.数组的解构(let也可以)
+		const F4 = ['香蕉君','比利王','野兽前辈'];
+		let [banana,bili,monster] = F4;
+		console.log(banana);
+		console.log(bili);
+		console.log(monster);
+		
+		//2.对象的解构
+		const Zhao = {
+			name : 'zhao',
+			age : 18,
+			program : function (){
+				console.log('我只会编程');
+			}
+		}
+		let {name1} = Zhao;
+		console.log(name1);//undefined 对象的解构赋值必须与变量值一致
+		
+		let {name,age,program} = Zhao;
+		program();
+		
+		let a = {name,age,program};
+		console.log(a.name);//这种赋值也可以转换(但是这样就会显得脱裤子放屁)
+		
+		let {program} = Zhao;
+		program();//报错 这样写不对
+	</script>
+</html>

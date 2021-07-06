@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>PromiseAPI</title>
+	</head>
+	<body>
+	</body>
+	<!--
+		本案例最后的输出结果的先后顺序是29,31,21行
+		这个案例可以用来理解promise执行的顺序
+	-->
+	<script>
+		//Promise.all() 里的参数应该是个数组，且里面都应该是promise对象
+		let callBack1 = Promise.reject(1)
+		
+		let callBack2 = Promise.reject(2)
+		
+		let callBack3 = Promise.reject(3)
+		
+		Promise.all([callBack1,callBack2,callBack3])
+			.then(
+				result => console.log(result)
+			).catch(
+				reason => console.log(reason)
+			)
+//		成功的返回值是一个数组
+//		其中只要有一个失败,就会进行失败的回调,谁最先失败返回的就是谁
+
+		console.log("-------------------");
+		
+		//Promise.race() 里面的参数与all类似
+		Promise.race([callBack1,callBack2,callBack3])
+			.then(
+				value => console.log(value)
+			).catch(
+				reason => console.log(reason)
+			)
+	</script>
+</html>

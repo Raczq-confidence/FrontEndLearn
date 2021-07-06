@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//ES6中可以简化对象的写法
+		let name = 'zhao';
+		let program = function () {
+			console.log(this.name);
+		}
+		let person = {
+			name,
+			program
+		}
+		console.log(person);
+		person.program();
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//1.sym创建对象属性
+		let game = {
+			name : '狼人杀',
+			methods : {
+				up : Symbol(),
+				down : Symbol()
+			}
+		}
+		game.methods.up = function () {
+			console.log('xxxx');
+		}
+		
+		game.methods.down = function () {
+			console.log('yyyy');
+		}
+		console.log(game);
+		
+		//2.sym创建对象属性
+		let game2 = {
+			name : '狼人杀',
+			[Symbol('up')] : function () {
+				console.log('xxxx');
+			},
+			[Symbol('down')] : function () {
+				console.log('yyyy');
+			}
+		}
+		console.log(game2);
+	</script>
+</html>

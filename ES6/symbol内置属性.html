@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		class Person{
+			static [Symbol.hasInstance](param){
+				console.log(param);
+				console.log('我被用来检测类型');
+			}
+		}
+		let o = {}
+		console.log(o instanceof Person);//自动执行上面的函数
+	</script>
+</html>

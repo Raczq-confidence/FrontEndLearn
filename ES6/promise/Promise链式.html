@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>promise链式</title>
+		<!--
+        	作者：1378921512@qq.com
+        	时间：2020-08-12
+        	描述：关于promise的详细讲解可以看http://www.woc12138.com/article/43
+        -->
+	</head>
+	<body>
+	</body>
+	<script>
+		new Promise((resolve,reject) => {
+			setTimeout(
+				function () {
+					resolve(1)
+				}
+			,10000)
+		}).then(
+			value => {
+				console.log('onResolved1:'+value)
+				return Promise.resolve(1)
+			}
+		).then(
+			value => {
+				console.log('onResolved2:'+value);
+			},
+			reason => {
+				console.log('onRejected2'+reason);
+			}
+		)
+	</script>
+</html>

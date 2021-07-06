@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//ES6可以通过箭头(=>)来定义函数
+		//声明一个函数
+		let fn = (a,b)=>{
+			console.log(a+b);
+		}
+		fn(1,2);
+		
+		//1.this是静态的，永远指向函数声明时作用域下this的值
+		function getName1(){
+			console.log(this.name);
+		}
+		getName2 = ()=>{
+			console.log(this.name);
+		}
+		//let name = 'zhao'; 以let声明的全局变量他不会保存在window对象里，而var则会保存在window对象里
+		var name = 'zhao';
+		let person = {
+			name : 'liu'
+		}
+		//直接调用
+		getName1();//zhao
+		getName2();//zhao
+		
+		//通过对象调用
+		getName1.call(person);//liu 
+		getName2.call(person);//zhao 以=>定义的函数this指向是静态的，指向作用域下 this的值
+		
+		//2.不能作为构造函数实例化对象
+//		let Person = (name,age) => {
+//			this.name = name;
+//			this.age = age;
+//		}
+//		let me = new Person('zhao',16);
+//		console.log(me);//报错 Person is not a constructors
+		
+		//3.不能使用arguments变量
+//		let fn1 = () => {
+//			console.log(arguments);
+//		}
+//		fn1(1,2,3);//报错 arguments is not defined at fn1
+
+		//4.箭头函数的简写
+			//1) 当形参有且只有一个的时候，小括号可以省略
+			let add = n => {
+				console.log(++n);//++n输出4 n++输出3
+			}
+			add(3);
+			
+			//2) 当代码体只有一条语句时，可以省略花括号
+			let add2 = n => 
+				console.log(++n);
+			add2(3);//4
+			
+			//3) 当第二种省略方式时，此时return 必须省略，且语句的执行结果就是函数的返回值
+//			let pow = n => return n*n;//报错
+			let pow = n => n*n;
+			console.log(pow(4));
+	</script>
+</html>

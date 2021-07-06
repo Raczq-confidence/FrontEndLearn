@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//创建一个Promise实例对象
+		let p = new Promise(function (resolve,reject) {
+			setTimeout(function () {
+				//1.异步成功
+				let data = '数据库中的用户数据';
+				resolve(data);
+				
+				//2.异步失败
+//				let err = '数据读取失败';
+//				reject(err);
+			},1000);
+		});
+		
+		//调用then方法,返回结果是一个Promise对象,他的状态由回调函数的执行结果决定
+		//如果没有返回值的状态下,不论成功还是失败,返回的结果中PromiseValue的值都是undefined，且PromiseStatus的值为resolved
+		//1.如果回调函数的值不是一个Promise对象,则状态为成功,返回值为对象的成功的值
+		let result = p.then(function (value) {
+			console.log(value);
+			//1.非Promise数据类型
+//			return '123';
+			//2.Promise对象
+//			return new Promise(function (resolve,reject) {
+//				//成功
+//				resolve('成功了');//resolved 成功了
+//				//失败
+//				reject('失败了');//rejecttd 失败了
+//			})
+			//3.抛出错误
+			throw new Error('出错了!!!');//rejected Error: 出错了!!!
+		},
+		function (reason) {
+			console.error(reason);
+			return '1234';
+		});
+		console.log(result);
+	</script>
+</html>

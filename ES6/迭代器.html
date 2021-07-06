@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let a = ['a','b','c','d'];
+		for (let i in a) {
+			console.log(i);//0 1 2 3
+		}
+		for (let i of a) {
+			console.log(i);//a b c d 
+		}
+		//for of遍历的是值，for in遍历的是键值
+		
+		//for of的实现原理(创建了一个都指针，next每调用一次都指向下一个)
+		let iterator = a[Symbol.iterator]();
+		let b = iterator.next();
+		while(b.value != undefined){
+			console.log(b.value);
+			b = iterator.next();
+		}
+	</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//ES6中引入rest参数，用于获取函数的实参，用来代替arguments
+		//ES5获取实参的方式
+		function date (a) {
+			console.log(arguments);
+		}
+		date(1,2,3);//返回一个伪数组
+		
+		//ES6 rest参数
+		function date2 (a,...args) {//rest参数用什么表示都行，不重名就可以
+			console.log(args);
+		}
+		date2(1,2,3);//[2,3]
+	</script>
+</html>

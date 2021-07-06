@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let arr = [1,2,3,4,5,4,3,2,1]
+		let arr2 = [4,5,5,4,6]
+		
+		//求交集
+		let result = [...new Set(arr)].filter( item => new Set(arr2).has(item) )
+		console.log(result)
+		
+		//求并集
+		let union = [...new Set([...arr,...arr2])]
+		console.log(union)
+		
+		//求差集
+		let reduce = [...new Set(arr)].filter( item => !(new Set(arr2).has(item)) )
+		console.log(reduce)
+	</script>
+</html>

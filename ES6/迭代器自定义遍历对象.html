@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let room = {
+			name : '241',
+			stus : [
+				'zhao',
+				'liu',
+				'li',
+				'wang',
+				'su'
+			],
+			[Symbol.iterator](){
+				let index = 0;
+				return {
+					next : () => {
+//						console.log(this.stus.length);
+						if(index < this.stus.length){
+							let result = {
+								value : this.stus[index],
+								done : false
+							};
+							index++;
+							return result;
+						}else{
+							return {
+								value : undefined,
+								done : true
+							}
+						}
+					}
+				};
+			}
+		}
+		for(let i of room){
+			console.log(i);
+		}
+	</script>
+</html>

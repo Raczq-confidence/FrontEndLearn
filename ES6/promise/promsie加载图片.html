@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		url1  = 'http://raczq.club/medias/featureimages/9.jpg'
+		
+		function loadImg (url) {
+			
+			const promise = new Promise((resolve,reject) => {
+				
+				let img = document.createElement('img')
+				
+				img.src = url
+				
+				img.onload = function() {
+					resolve(img)
+				}
+				
+				img.onerror = function() {
+					const error = new Error('Load image fail')
+					reject(error)
+				}
+				
+			})
+			
+			return promise
+			
+		}
+		
+		loadImg(url1).then( res => {
+			document.body.appendChild(res)
+		})
+		.catch( err => {
+			console.error(err)		
+		})
+		
+	</script>
+</html>

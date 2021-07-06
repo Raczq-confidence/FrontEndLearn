@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+	<script>
+		//1.数组合并
+		let a = [1,2,3];
+		let b = [4,5];
+		let c1 = a.concat(b);
+		let c2 = [...a,...b];
+		console.log(c1,c2);//两个数组都一样
+		
+		//2.数组克隆
+		let a1 = [1,2,3,4,5];
+		let c3 = [...a1];
+		console.log(c3);
+		
+		//3.将伪数组转换为真数组
+		let divs1 = document.getElementsByTagName('div');//divs1是伪数组
+		console.log(divs1);
+		let divs2 = [...divs1];
+		console.log(divs2);
+	</script>
+</html>
