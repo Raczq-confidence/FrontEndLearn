@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="value in obj" :key="value">
+					{{ value }}
+				</li>
+			</ul>
+			<button @click="addobj">wdnmd</button>
+		</div>
+	</body>
+	<script>
+		let vue = new Vue({
+			el : '#app',
+			data : {
+				obj : {
+					a : 'obj.a'
+				}
+			},
+			methods : {
+				addobj(){
+//					this.obj.b = 'obj.b';
+//					console.log(this.obj);
+//					这种样的写法不能够使data中的数据实时渲染上去
+//						-原因在于vue的实例创建，obj.b这个属性并不存在
+//						-他并没有被vue转换为响应式的属性，就不会触发视图的更新
+//						-此时就需要使用到Vue的全局api $set()
+					this.$set(this.obj,'b','obj.b');
+					console.log(this.obj);
+//					$set()方法相当于手动把属性设置为响应式属性,视图就会跟着改变了
+				}
+			}
+		});
+	</script>
+</html>

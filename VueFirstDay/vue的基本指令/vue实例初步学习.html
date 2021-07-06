@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+		<title>VueFirstTest</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>
+				
+				<p>{{ msg }}</p>
+				
+			</p>
+
+		</div>
+		
+		<script>
+			//创建一个vue的实例
+			//构造函数
+			let vm = new Vue({
+				el: '#app',//表示我们的这个vue实例要控制页面上的哪个区域
+				data: { //data属性中存放的是el中要用到的数据 
+					msg: '欢迎',//通过vue提供的指令，方便渲染元素，无需DOM操作
+				}
+			})
+		</script>
+	</body>
+</html>

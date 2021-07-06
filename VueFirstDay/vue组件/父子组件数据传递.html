@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>父子组件数据传递</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+				<first-test :fruitlist="list" @handle="addF($event)"></first-test>
+		</div>
+	</body>
+	<script>
+		Vue.component('first-test',{
+			//子组件通过props属性获取到父组件的数据
+			props : ['fruitlist'],
+			template : `
+				<div>
+					<ul>
+						<li v-for="(item,i) in fruitlist" :key="i">{{ item }}</li>
+					</ul>
+					<button @click="$emit('handle','lemon')">点击</button>
+					<button @click="$emit('handle','watermelon')">点击</button>
+				</div>
+			`
+			//子组件通过自定义事件向父组件传递数据
+		})
+		let vm = new Vue({
+			el : '#app',
+			data : {
+				list : ['apple','banana','orange']	
+			},
+			methods : {
+				addF(val){
+					this.list.push(val)
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动态分配路由</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/vue-router.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to="/user/1">user1</router-link>
+			<router-link to="/user/2">user2</router-link>
+			<router-link to="/user/3">user3</router-link>
+			<router-view></router-view>
+		</div>
+	</body>
+	<script>
+		const user = {
+			template : `
+				<h2>User {{ $route.params.id }}</h2>
+			`
+		}
+		
+		let vr = new VueRouter({
+			routes : [
+				{ path : '/user/:id', component : user }
+			]
+		})
+		
+		let vm = new Vue({
+			el : '#app',
+			router : vr
+		})
+	</script>
+</html>

@@ -1,0 +1,96 @@
+.header{
+	width: 1536px;
+	height: 50px;
+	background-color: #515B62;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	font-size: 30px;
+}
+
+.left{
+	width: 300px;
+	height: 653px;
+	background-color: #515B62;
+	float: left;
+}
+
+.left ul li {
+	color: #fff;
+	height: 50px;
+	width: 300px;
+	background-color: #9EA09D;
+	border-bottom: #fff solid 2px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.main{
+	width: 1536px;
+	height: 653px;
+}
+
+.container{
+	width: 1236px;
+	height: 653px;
+	float: left;
+}
+
+.container h2{
+	font-size: 25px;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.container table{
+	font-size: 20px;
+	border: solid #EDEFED 1px;
+}
+
+.container th{
+	width: 300px;
+	height: 50px;
+	background-color: #DADDDA;
+	font-weight: bold;
+}
+
+.container td{
+	text-align: center;
+	width: 300px;
+	height: 50px;
+}
+
+.container td a{
+	color: #00f;
+	text-decoration: underline;
+}
+
+.container td,th{
+	border: solid #EDEFED 1px;
+	border-bottom: 0;
+	border-left: 0;
+}
+
+.container button{
+	margin: 0 543px; 
+	width: 150px;
+	height: 100px;
+}
+
+.footer{
+	width: 1536px;
+	height: 50px;
+	background-color: #686A68;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	font-size: 16px;
+}
+
+.clearfix::before,
+.clearfix::after{
+	content: '';
+	display: table;
+	clear: both;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VueFifthTest</title>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+			
+			.thin{
+				font-weight: 200;
+			}
+			
+			.italic{
+				font-style: italic;
+			}
+			
+			.active{
+				letter-spacing: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<!-- 第一种方式 -->	
+			<!--<h1 :class="['red','thin','italic']">Big H1!!!</h1>-->
+		
+			<!-- 在数组中使用三元表达式 -->
+			<!--<h1 :class="['red','thin', flag? 'active':'' ]">Big H1!!!</h1>-->
+			
+			<!-- 在数组中使用对象变量，前面的属性加不加引号都可以 -->
+			<h1 :class="['red','thin',{active:flag}]">Big H1!!!</h1>
+			
+		</div>
+		
+		
+		<script>
+			let vm = new Vue({
+				el : '#app',
+				data : {
+					flag : true,
+				},
+				methods : {
+					
+				}
+				
+			});
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>VueThirdTest</title>
+		<style>
+			.inner{
+				height: 150px;
+				background-color: chartreuse;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--
+        	事件修饰符
+        	1. .stop阻止冒泡(正常情况由内向外)
+        	2. .prevent阻止默认事件
+        	3. .capture添加事件监听器时使用事件捕获模式(改变触发模式)
+        	4. .self只当事件在该元素本身(比如不是子元素)触发时触发回调
+        	5. .once事件只触发一次
+        -->
+		
+		<div id="app">
+			
+			<!-- 使用.stop阻止冒泡 -->
+			<!--<div class="inner" @click="divHanlder">
+				<input type="button" value="Yabeeeee!!!!" @click.stop="btnHanlder" />
+			</div>-->
+			
+			<!-- 使用.prevent阻止默认事件 -->
+			<!--<a href="http://www.google.com" @click.prevent="divHanlder">遇事不决上Google</a>-->
+			
+			<!-- 使用.capture改变事件触发模式 -->
+			<!--<div class="inner" @click.capture="divHanlder">
+				<input type="button" value="Yabeeeee!!!!" @click="btnHanlder" />
+			</div>-->
+			
+			<!-- 使用.self只有自身事件触发时才会起作用(正常情况可能会因为冒泡顺序被动触发) -->
+			<!--<div class="inner" @click.self="divHanlder">
+				<input type="button" value="Yabeeeee!!!!" @click="btnHanlder" />
+			</div>-->
+		
+			<!-- 使用.once只触发一次,无关使用顺序 -->
+			<a href="http://www.google.com" @click.prevent.once="divHanlder">遇事不决上Google</a>
+			
+		</div>
+		
+		<script>
+			let vm = new Vue({
+				el : '#app',
+//				data : {
+//					
+//				},
+				methods : {
+					divHanlder(){
+						console.log('div Yabeeeeee!!!!');
+					},
+					btnHanlder(){
+						console.log('btn Yabeeeeee!!!!');
+					}
+				}
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

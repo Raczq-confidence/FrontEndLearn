@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/comment.css" />
+	</head>
+	<body>
+		<div id="app">
+			<comt-Box @func="loadCmt"></comt-Box>
+			
+			
+				<transition-group tag="ul" appear>
+					<li v-for="(item,i) in list" :key="i" v-cloak>
+						{{ item.content }}
+						<span>
+							评论人：{{ item.user }}
+						</span>
+					</li>
+				</transition-group>
+		
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script type="text/javascript" src="js/comment.js" ></script>
+</html>

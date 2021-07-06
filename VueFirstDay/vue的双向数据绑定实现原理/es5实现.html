@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es5实现双向数据绑定</title>
+	</head>
+	<body>
+		
+		姓名：<span id="spanName"></span><br />
+		<input type="text" id="text" value="" />
+		
+	</body>
+	<script>
+		
+		let obj = {
+			name : ''
+		}
+		
+		let newObj = {
+			...obj
+		}
+		
+		Object.defineProperty(obj,'name',{
+			
+			get() {
+				console.log('获取属性')
+				return newObj.name
+			},
+			set(val) {
+				newObj.name = val
+				observe(newObj)
+			}
+			
+		})
+		
+		function observe(obj){
+			
+			spanName.innerHTML = obj.name 
+			
+		}
+		
+		text.addEventListener('input',function () {
+			obj.name = this.value
+		})
+		
+	</script>
+</html>

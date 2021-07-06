@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VueSevenTest</title>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-for="(item,i) in list">{{ item.id }} ------------ {{ item.name }}</p>
+		</div>
+		
+		
+		<script>
+			let vm = new Vue({
+				el : '#app',
+				data : {
+					list : [
+						{id:1,name:'alice'},
+						{id:2,name:'bob'},
+						{id:3,name:'clarie'}
+					]
+				},
+				methods : {
+					
+				}
+			})
+		</script>
+	</body>
+</html>

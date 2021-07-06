@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/* 解决差值表达式的闪烁问题 */
+			[v-cloak] {
+			  display: none;
+			}
+			
+			li{
+				border: 1px dashed #999;
+				margin: 5px;
+				padding-left: 2px;
+				font-size: 20px;
+				/* 添加宽度以防止删除时因为脱离文档流而造成的宽度塌陷 */
+				width: 100vw;
+			}
+			
+			li:hover{
+				background-color: #2ecc71;
+				transition: all 0.4s ease;
+			}
+			
+			label{
+				margin-left: 44px;
+			}
+			
+			/*实现添加与页面加载时的动画效果*/
+			.v-enter,
+			.v-leave-to{
+				opacity: 0;
+				transform: translateY(80px);
+			}
+			
+			.v-enter-active,
+			.v-leave-active{
+				transition: all 0.4s ease; 
+			}
+			
+			/* 移除时使列表项柔和的向上顶入 */
+			.v-move{
+				transition: all 0.4s ease;
+			}
+			
+			.v-leave-active{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<label>
+				id : <input type="text" v-model="id" />
+				name : <input type="text" v-model="name" />
+				<input type="button" value="添加" @click="add"/>
+			</label>
+			<!--<ul>-->
+				<!-- 动画组添加在li列表中 -->
+				<!-- appear就是用来实现刚进入页面的效果 -->
+				<!-- 通过为transition设置tag属性，将transition-group标签渲染为ul -->
+				<transition-group appear tag="ul">
+					<li v-for="(item,i) in list" :key='item.id' v-cloak @click="del(i)">
+						{{ item.id }}  ----- {{ item.name }}
+					</li>	
+				</transition-group>
+			<!--</ul>-->
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let vm = new Vue({
+			el : '#app',
+			data : {
+				id : '',
+				name : '',
+				list : [
+					{ id: 1, name: 'liu'},
+					{ id: 2, name: 'zhao'},
+					{ id: 3, name: 'wang'},
+					{ id: 4, name: 'su'},
+				]
+			},
+			methods : {
+				add(){
+					this.list.push({
+						id : this.id,
+						name : this.name
+					})
+					this.id = this.name = ''
+				},
+				del(i){
+					this.list.splice(i,1)
+				}
+			}
+		})
+	</script>
+</html>

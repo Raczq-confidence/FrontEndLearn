@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-color="style"/>
+		</div>
+	</body>
+	<script>
+		let vm = new Vue({
+			el : '#app',
+			data : {
+				style : {
+					color : 'orange'
+				}
+			},
+			directives : {
+				color : {
+					inserted : function (el,binding) {
+						el.style.color = binding.value.color;
+					}
+				}
+			}
+		});
+	</script>
+</html>

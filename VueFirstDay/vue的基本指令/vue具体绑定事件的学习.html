@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VueSecondTest</title>
+	</head>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<!--使用v-cloak能够解决插值表达式闪烁的问题，不存在覆盖问题-->
+			<p v-cloak>
+				 {{ msg }}
+			</p>
+			
+				
+			<!--v-text没有闪烁问题，但是会有覆盖问题-->
+			<h3 v-text="msg">==========</h3>
+			
+			<div v-html="info">12345</div>
+			
+			<!-- v-bind 一个用于绑定属性的指令 -->
+			<input type="button" value="按钮" v-bind:title="msg + 'werty' " />
+			<br />
+			<br />
+			
+			<!-- v-bind的简写形式  等同于v-bind: -->
+			<!-- v-on提供了时间绑定机制 -->
+			<input type="button" value="按钮" :title="msg" v-on:click="show()" />
+			<br />
+			<br />
+			
+			<!-- v-on的缩写形式为@ -->
+			<!-- 在vm实例中，如果要调用内部的属性，需要用到this -->
+			<input type="button" value="按钮" :title="msg" @click="testThis" />
+			<br />
+			<br />
+			
+			<input type="button" value="按钮" :title="msg" @click="testParam('Hello World')" />
+			<br />
+			<br />
+			<!-- 注意v-on中的函数调用时，加不加括号都可以 -->
+			
+			<input type="button" value="按钮" :title="msg" @click="testSepcial" />
+			
+			
+		</div>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+		
+		<script>
+			let vm = new Vue({
+				el: '#app',
+				data : {
+					msg : '123',
+					info : '<h1>欢迎</h1>'
+				},
+				methods : { //此属性中定义了vue实例中可用的方法
+					show : function () {
+						alert('Hello');
+					},
+					testThis(){
+						this.show();
+						alert(this.msg);
+					},
+					testParam(param){
+						alert(param);
+					},
+					testSepcial(){
+						//this指针指向问题的解决方法=>
+						setInterval( () => {
+							console.log(this.msg);
+						},1000);
+					}
+				}
+			})
+		</script>
+	</body>
+	
+	<!-- 1.v-cloak解决闪烁问题 -->
+	<!-- 2.插值表达式和v-text之间的区别  -->
+	<!-- 3.v-html渲染html标签 -->
+	<!-- 4.v-bind绑定属性，缩写为 : -->
+	<!-- 5.v-on事件绑定机制，缩写为 @ -->
+</html>

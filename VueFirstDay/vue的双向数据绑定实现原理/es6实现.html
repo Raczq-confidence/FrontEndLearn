@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es6实现</title>
+	</head>
+	<body>
+		姓名：<span id="spanName"></span><br />
+		<input type="text" id="inpName" value="" />
+	</body>
+	<script>
+		
+		let obj = {}
+		
+		obj = new Proxy(obj,{
+			get(target,prop) {
+				return target[prop]
+			},
+			set(target,prop,value) {
+				target[prop] = value
+				spanName.innerHTML = value
+			}
+		})
+		
+		inpName.oninput = function () {
+			obj.name = this.value
+		}
+		
+	</script>
+</html>

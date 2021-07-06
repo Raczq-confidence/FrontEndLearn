@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<!--1.计算属性与方法的区别
+				-计算属性是将计算结果存储在缓存中，只要data中的数据不改变，缓存也就不会变
+				-方法不依赖缓存，每一次调用他都会进行计算
+			2.为什么要使用计算属性
+				-计算属性依赖缓存可以节省性能
+		-->
+		<div id="app">
+			<div>{{ msg }}</div>
+			<div>{{ reverseString }}</div>
+		</div>
+	</body>
+	<script>
+		let vue = new Vue({
+			el : '#app',
+			data : {
+				msg : 'Hello'
+			},
+			computed : {
+				reverseString : function () {
+					console.log('computed');
+					return this.msg.split('').reverse().join('');
+				} 
+			}
+		});
+	</script>
+</html>

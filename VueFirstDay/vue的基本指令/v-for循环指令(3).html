@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VueSevenTest</title>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-for="info in user"> {{ info }} </p>
+		</div>
+		
+		<div id="test">
+			<p v-for="(value,key,i) in user">(键){{ key }} ------ (值){{ value }} ------- (索引){{ i }} </p>
+		</div>
+		
+		
+		<script>
+			let vm = new Vue({
+				el : '#app',
+				data : {
+					user : {id:1,name:'alice',age:13,hobbit:'football'}
+				},
+				methods : {
+					
+				}
+			})
+			
+			let test = new Vue({
+				el :'#test',
+				data : {
+					user : {id:1,name:'alice',age:13,hobbit:'football'}					
+				},
+				methods : {
+					
+				}
+			})
+		</script>
+	</body>
+</html>

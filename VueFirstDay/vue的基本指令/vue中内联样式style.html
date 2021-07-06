@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<title>VueSixthTest</title>
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			
+			<!-- 对象就是无序键值对的集合 -->
+			<!--<h1 :style="{color:'red','font-weight':'200'}">装逼如风，常伴吾身</h1>-->
+			
+			
+			<h1 :style="styleObj">装逼如风，常伴吾身</h1>
+			
+		</div>
+		
+		
+		<script>
+			let vm = new Vue({
+				el: '#app',
+				data : {
+					styleObj : {color:'red','font-weight':'200'}
+				},
+				methods : {
+					
+				}
+			})
+		</script>
+	</body>
+</html>

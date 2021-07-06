@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>侦听器</title>
+	</head>
+	<body>
+		<!--
+			本案例的实现过程
+			1.设置当侦听到数据变化时要进行的操作函数
+			2.设置侦听器
+			3.设置侦听器的触发方式
+		-->
+		<div id="app">
+			<span>用户名</span>
+			<input type="text" v-model.lazy='username'/>
+			<span>{{ tip }}</span>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let vm = new Vue({
+			el : '#app',
+			data : {
+				username : '',
+				tip : ''
+			},
+			methods : {
+				checkName(username){
+					if(username == 'alice'){
+						this.tip = '用户名已经存在';
+					}else{
+						this.tip = '用户名可用'
+					}
+				}
+			},
+			watch : {
+				username(val){
+					setTimeout(()=>{
+						this.checkName(val);
+					},2000);
+					this.tip = '正在验证....' 
+				}
+			}
+		});
+	</script>
+</html>
